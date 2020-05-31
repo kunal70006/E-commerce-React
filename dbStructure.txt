@@ -1,0 +1,35 @@
+items {
+  item1doc: {
+    name: 'abc'
+    price: 69
+    pictures: 'some binary shit here'
+    description: 'rock and roll bitches'
+    seller: 'harambe'
+  }
+  item2doc: {
+
+  }
+  and so on....
+}
+
+users {
+  uid: {
+    cart {
+      item1doc: {
+        itemName: 'abc'
+        itemPrice: 69
+        itemPictures: 'some binary shit here'
+        itemDescription: 'rock and roll bitches'
+        seller: 'harambe'
+        quantity: 69
+        amountPerItem: 420
+      }
+      item2doc: {
+
+      }
+      and so on....
+    }
+
+    email: 'simp@pussy.com'
+  }
+}
