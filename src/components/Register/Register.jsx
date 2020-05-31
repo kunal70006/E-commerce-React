@@ -1,8 +1,9 @@
 import firebase from '../../Firebase'
 import { useState } from 'react'
+import styles from './Register.module.css'
 
 
-const RegisterComponent = () => {
+const Register = () => {
 
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
@@ -55,4 +56,4 @@ const RegisterComponent = () => {
   )
 }
 
-export default RegisterComponent
+export default Register

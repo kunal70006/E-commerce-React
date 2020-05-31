@@ -3,4 +3,4 @@ export { default as Shop } from "./Shop/Shop";
 export { default as About } from "./About/About";
 export { default as Cart } from "./Cart/Cart";
 export { default as Navbar } from "./Navbar/Navbar";
-export { default as RegisterComponent } from './RegisterComponent/RegisterComponent'
+export { default as Register } from './Register/Register'
