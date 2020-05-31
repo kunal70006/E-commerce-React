@@ -3,14 +3,14 @@ import 'firebase/firestore'
 
 
 var firebaseConfig = {
-  apiKey: "AIzaSyBzDxe-nX85HvjvqNNNW2XmJ1tG9weQ22o",
-  authDomain: "e-commerce-react-d61af.firebaseapp.com",
-  databaseURL: "https://e-commerce-react-d61af.firebaseio.com",
-  projectId: "e-commerce-react-d61af",
-  storageBucket: "e-commerce-react-d61af.appspot.com",
-  messagingSenderId: "960310783046",
-  appId: "1:960310783046:web:9a1a775d1aad3ab5382e47",
-  measurementId: "G-32Y8X9E8GY"
+  apiKey: "AIzaSyCxMNMvf6LFg_SJUMILMtShK1XEHN7mPm4",
+  authDomain: "e-commerce-react-e542f.firebaseapp.com",
+  databaseURL: "https://e-commerce-react-e542f.firebaseio.com",
+  projectId: "e-commerce-react-e542f",
+  storageBucket: "e-commerce-react-e542f.appspot.com",
+  messagingSenderId: "54774995439",
+  appId: "1:54774995439:web:7b7b8713855fc8efbcfe1a",
+  measurementId: "G-REGHLXW5F8"
 };
 
 firebase.initializeApp(firebaseConfig);
