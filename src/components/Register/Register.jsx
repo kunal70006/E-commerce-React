@@ -25,8 +25,8 @@ const Register = (props) => {
   return (
     <div className={styles.Register}>
       <div className={styles.heroImg}>
-        <div className={styles.loginContainer}>
-          <h4>Login</h4>
+        <div className={styles.registerContainer}>
+          <h4>Register</h4>
           <input
             type="email"
             placeholder="Enter your email"

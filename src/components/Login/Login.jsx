@@ -5,46 +5,46 @@ import styles from "./Login.module.css";
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [confirmPassword, setConfirmPassword] = useState("");
 
   const registerButtonDidClick = (event) => {
     event.preventDefault();
-    firebase.auth().createUserWithEmailAndPassword(email, password);
+    firebase.auth().signInWithEmailAndPassword(email, password);
   };
 
   return (
-    <div>
-      <input
-        type="email"
-        placeholder="Enter your email"
-        value={email}
-        onChange={(event) => {
-          setEmail(event.target.value);
-        }}
-      />
-      <input
-        type="password"
-        placeholder="Set your password"
-        value={password}
-        onChange={(event) => {
-          setPassword(event.target.value);
-        }}
-      />
-      <input
-        type="password"
-        placeholder="Confirm your password"
-        value={confirmPassword}
-        onChange={(event) => {
-          setConfirmPassword(event.target.value);
-        }}
-      />
+    <div className={styles.Login}>
+      <div className={styles.heroImg}>
+        <div className={styles.loginContainer}>
+          <h4>Login</h4>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(event) => {
+              setEmail(event.target.value);
+            }}
+          />
+          <input
+            type="password"
+            placeholder="Set your password"
+            value={password}
+            onChange={(event) => {
+              setPassword(event.target.value);
+            }}
+          />
 
-      <label className={styles.passwordChecker}>
-        {password === confirmPassword ? "" : "Passwords do not match"}
-      </label>
+          <button
+            className={styles.loginButton}
+            onClick={registerButtonDidClick}
+          >
+            Login
+          </button>
 
-      <div className={styles.registerButton} onClick={registerButtonDidClick}>
-        Register
+          <div className={styles.regHref}>
+            Don't have an account?
+            <a href="/register">Register</a>
+          </div>
+        </div>
       </div>
     </div>
   );
