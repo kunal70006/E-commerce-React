@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
 import firebase from "../../Firebase";
-import { useState } from "react";
 import styles from "./Register.module.css";
 
 const Register = (props) => {

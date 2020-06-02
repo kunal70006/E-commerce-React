@@ -2,8 +2,8 @@
     "version": 3,
     "mappings": "",
     "sources": [
-        "Login.scss"
+        "Login.module.scss"
     ],
     "names": [],
-    "file": "Login.css"
+    "file": "Login.module.css"
 }
