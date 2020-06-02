@@ -43,7 +43,7 @@ const Register = (props) => {
         {password === confirmPassword ? "" : "Passwords do not match"}
       </label>
 
-      <div onClick={props.history.push("/login")}>
+      <div onClick={() => props.history.push("/login")}>
         Already have an account? Log in
       </div>
 
