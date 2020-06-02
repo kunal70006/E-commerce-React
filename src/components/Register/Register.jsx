@@ -9,7 +9,13 @@ const Register = (props) => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const registerButtonDidClick = (event) => {
-    firebase.auth().createUserWithEmailAndPassword(email, password);
+    firebase.auth().createUserWithEmailAndPassword(email, password).then( (user) => {
+      localStorage.setItem('email', user.user.email)
+      localStorage.setItem('uid', user.user.uid)
+      props.history.push('/')
+    }).catch( (error) => {
+      alert(error.code, error.message)
+    })
   };
 
   return (
