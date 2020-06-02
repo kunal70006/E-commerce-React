@@ -9,6 +9,7 @@ const Register = (props) => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const registerButtonDidClick = (event) => {
+    event.preventDefault();
     firebase.auth().createUserWithEmailAndPassword(email, password);
   };
 
