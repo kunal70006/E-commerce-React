@@ -1,1 +1,132 @@
-/* No CSS *//*# sourceMappingURL=Register.module.css.map */
+.loginContainer {
+  /*background-color: whitesmoke;
+
+  display: flex;
+  flex-direction: column;
+
+  width: 50%;
+
+  padding: 30px 20px;
+
+  border-radius: 5px;
+  box-shadow: 0px 0px 14px 10px rgba(0, 0, 0, 0.5);*/
+  position: absolute;
+  width: 400px;
+  padding: 40px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+  background: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 8px 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 8px 10px rgba(0, 0, 0, 0.5);
+}
+
+.loginContainer h4 {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: -15px;
+  font-size: 35px;
+  margin-bottom: 10px;
+  color: #2b2b2b;
+}
+
+.heroImg {
+  background-image: url("../LandingPage/hero.jpg");
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+}
+
+.Register {
+  height: 100vh;
+  letter-spacing: 1.5px;
+}
+
+.Register input[type="email"],
+.Register input[type="password"] {
+  letter-spacing: 1.5px;
+  font-size: 25px;
+  padding: 4px 8px;
+  margin-bottom: 10px;
+  background: none;
+  color: #2b2b2b;
+  border: 2px solid #2979ff;
+  border-radius: 5px;
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+}
+
+.Register input[type="email"]::-webkit-input-placeholder,
+.Register input[type="password"]::-webkit-input-placeholder {
+  color: #2b2b2b;
+  font-size: 20px;
+}
+
+.Register input[type="email"]:-ms-input-placeholder,
+.Register input[type="password"]:-ms-input-placeholder {
+  color: #2b2b2b;
+  font-size: 20px;
+}
+
+.Register input[type="email"]::-ms-input-placeholder,
+.Register input[type="password"]::-ms-input-placeholder {
+  color: #2b2b2b;
+  font-size: 20px;
+}
+
+.Register input[type="email"]::placeholder,
+.Register input[type="password"]::placeholder {
+  color: #2b2b2b;
+  font-size: 20px;
+}
+
+.Register input[type="email"]:focus,
+.Register input[type="password"]:focus {
+  outline: none;
+}
+
+.registerButton {
+  cursor: pointer;
+  font-size: 20px;
+  padding: 4px 8px;
+  background: none;
+  color: #2b2b2b;
+  border: 2px solid #2979ff;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+}
+
+.registerButton:hover {
+  background-color: #2979ff;
+  color: #fafafa;
+}
+
+.registerButton:focus {
+  outline: none;
+}
+
+.registerButton:active {
+  outline: none;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
+
+.loginHref a {
+  color: #2979ff;
+  text-decoration: none;
+  padding: 4px;
+}
+
+.loginHref a:hover {
+  text-decoration: underline;
+}
+/*# sourceMappingURL=Register.module.css.map */

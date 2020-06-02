@@ -8,52 +8,66 @@ const Register = (props) => {
   const [confirmPassword, setConfirmPassword] = useState("");
 
   const registerButtonDidClick = (event) => {
-    firebase.auth().createUserWithEmailAndPassword(email, password).then( (user) => {
-      localStorage.setItem('email', user.user.email)
-      localStorage.setItem('uid', user.user.uid)
-      props.history.push('/')
-    }).catch( (error) => {
-      alert(error.code, error.message)
-    })
+    event.preventDefault();
+    firebase
+      .auth()
+      .createUserWithEmailAndPassword(email, password)
+      .then((user) => {
+        localStorage.setItem("email", user.user.email);
+        localStorage.setItem("uid", user.user.uid);
+        props.history.push("/");
+      })
+      .catch((error) => {
+        alert(error.code, error.message);
+      });
   };
 
   return (
-    <div>
-      <input
-        type="email"
-        placeholder="Enter your email"
-        value={email}
-        onChange={(event) => {
-          setEmail(event.target.value);
-        }}
-      />
-      <input
-        type="password"
-        placeholder="Set your password"
-        value={password}
-        onChange={(event) => {
-          setPassword(event.target.value);
-        }}
-      />
-      <input
-        type="password"
-        placeholder="Confirm your password"
-        value={confirmPassword}
-        onChange={(event) => {
-          setConfirmPassword(event.target.value);
-        }}
-      />
+    <div className={styles.Register}>
+      <div className={styles.heroImg}>
+        <div className={styles.loginContainer}>
+          <h4>Login</h4>
+          <input
+            type="email"
+            placeholder="Enter your email"
+            value={email}
+            onChange={(event) => {
+              setEmail(event.target.value);
+            }}
+          />
+          <input
+            type="password"
+            placeholder="Set your password"
+            value={password}
+            onChange={(event) => {
+              setPassword(event.target.value);
+            }}
+          />
+          <input
+            type="password"
+            placeholder="Confirm your password"
+            value={confirmPassword}
+            onChange={(event) => {
+              setConfirmPassword(event.target.value);
+            }}
+          />
 
-      <label className={styles.passwordChecker}>
-        {password === confirmPassword ? "" : "Passwords do not match"}
-      </label>
+          <label className={styles.passwordChecker}>
+            {password === confirmPassword ? "" : "Passwords do not match"}
+          </label>
 
-      <div onClick={() => props.history.push("/login")}>
-        Already have an account? Log in
-      </div>
+          <button
+            className={styles.registerButton}
+            onClick={registerButtonDidClick}
+          >
+            Register
+          </button>
 
-      <div className={styles.registerButton} onClick={registerButtonDidClick}>
-        Register
+          <div className={styles.loginHref}>
+            Already have an account?
+            <a href="/login">Log in</a>
+          </div>
+        </div>
       </div>
     </div>
   );
