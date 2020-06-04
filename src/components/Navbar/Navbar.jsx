@@ -9,7 +9,9 @@ const Navbar = () => {
       <nav className={styles.Navbar}>
         <div className={styles.links}>
           <img src="./icon.ico" alt="logo" className={styles.logo} />
-          <div className={styles.title}>Antique Coins</div>
+          <div className={styles.title} onClick={() => history.push("/")}>
+            Antique Coins
+          </div>
           <div
             className={styles.nav_links}
             onClick={() => history.push("/shop")}
