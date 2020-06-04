@@ -1,14 +1,23 @@
 import React, { useState } from "react";
 import firebase from "../../Firebase";
 import styles from "./Login.module.css";
+import { useHistory } from "react-router-dom";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
+  const history = useHistory();
+
   const registerButtonDidClick = (event) => {
     event.preventDefault();
-    firebase.auth().signInWithEmailAndPassword(email, password);
+    firebase.auth().signInWithEmailAndPassword(email, password).then( (user) => {
+      localStorage.setItem("email", user.user.email);
+        localStorage.setItem("uid", user.user.uid);
+        history.push("/");
+    }).catch( (error) => {
+      alert(error.code, error.message);
+    });
   };
 
   return (

@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import {useHistory} from "react-router-dom"
 import firebase from "../../Firebase";
 import styles from "./Register.module.css";
 
@@ -6,6 +7,8 @@ const Register = (props) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
+
+  const history = useHistory();
 
   const registerButtonDidClick = (event) => {
     event.preventDefault();
@@ -15,7 +18,7 @@ const Register = (props) => {
       .then((user) => {
         localStorage.setItem("email", user.user.email);
         localStorage.setItem("uid", user.user.uid);
-        props.history.push("/");
+        history.push("/");
       })
       .catch((error) => {
         alert(error.code, error.message);
