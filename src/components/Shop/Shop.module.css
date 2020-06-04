@@ -2,6 +2,7 @@
   height: 100vh;
   letter-spacing: 1.5px;
   overflow-x: hidden;
+  background-color: #eeede7;
 }
 
 .title {
@@ -30,6 +31,7 @@
 }
 
 .cardContainer {
+  background-color: white;
   max-width: -webkit-fit-content;
   max-width: -moz-fit-content;
   max-width: fit-content;
