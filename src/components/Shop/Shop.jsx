@@ -41,7 +41,7 @@ const Shop = () => {
       <Navbar />
       <div className={styles.title}>Antique Coins</div>
       <div className={styles.container}>
-        {items.map((item) => {
+        {items.map((item, index) => {
           return (
             <div className={styles.cardContainer}>
               <div className={styles.card}>
@@ -52,7 +52,7 @@ const Shop = () => {
                 />
                 <div className={styles.aboutCardContainer}>
                   <h4>{item.name}</h4>
-                  <p className={styles.desc}>{item.desc}</p>
+                  {/* <p className={styles.desc}>{item.desc}</p> */}
                   <p className={styles.price}>${item.price}</p>
                   <button className={styles.toCartBtn}>Add to cart</button>
                 </div>
