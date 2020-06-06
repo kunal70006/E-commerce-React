@@ -1,8 +1,10 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import Navbar from "../Navbar/Navbar";
 import styles from "./Shop.module.css";
 
 const Shop = () => {
+  const history = useHistory();
   const items = [
     {
       name: "coin 2",
@@ -43,7 +45,10 @@ const Shop = () => {
       <div className={styles.container}>
         {items.map((item, index) => {
           return (
-            <div className={styles.cardContainer}>
+            <div
+              className={styles.cardContainer}
+              onClick={() => history.push("/details")}
+            >
               <div className={styles.card}>
                 <img
                   src={require("./5.png")}
