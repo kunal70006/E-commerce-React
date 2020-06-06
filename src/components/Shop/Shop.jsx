@@ -1,6 +1,6 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import Navbar from "../Navbar/Navbar";
+import { Navbar } from "../../components";
 import styles from "./Shop.module.css";
 
 const Shop = () => {
@@ -38,6 +38,20 @@ const Shop = () => {
     },
   ];
 
+  const Details = ({ name, price }) => {
+    return (
+      <div className={styles.Details}>
+        <Navbar />
+        {console.log(`${name} + ${price}`)}
+        <h1>In details</h1>
+        <p>
+          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Veniam,
+          tempora?
+        </p>
+      </div>
+    );
+  };
+
   return (
     <div className={styles.Shop}>
       <Navbar />
@@ -45,11 +59,11 @@ const Shop = () => {
       <div className={styles.container}>
         {items.map((item, index) => {
           return (
-            <div
-              className={styles.cardContainer}
-              onClick={() => history.push("/details")}
-            >
-              <div className={styles.card}>
+            <div key={index} className={styles.cardContainer}>
+              <div
+                className={styles.card}
+                onClick={() => <Details name={item.name} price={item.price} />}
+              >
                 <img
                   src={require("./5.png")}
                   alt="coin1"
