@@ -8,6 +8,7 @@ import {
   Register,
   Login,
   UploadItem,
+  Details,
 } from "./components";
 import "./App.css";
 
