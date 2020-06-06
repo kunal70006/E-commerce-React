@@ -1,21 +1,28 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styles from './UploadItem.module.css'
-import { firebase , storage } from '../../Firebase'
-
+import { storage } from '../../Firebase'
+import firebase from '../../Firebase'
+import Navbar from '../Navbar/Navbar'
+import TextareaAutosize from 'react-textarea-autosize';
 
 const UploadItem = () => {
 
   const [image, setImage] = useState(null)
   const [imageUrl, setImageUrl] = useState('')
   const [progress, setProgress] = useState(0)
+
+  const [itemName, setItemName] = useState(null)
+  const [itemPrice, setItemPrice] = useState(null)
+  const [itemDescription, setItemDescription] = useState(null)
     
-  const handleChange = (event) => {
+  const selectImage = (event) => {
     if (event.target.files[0]) {
       setImage(event.target.files[0])
     }
   }
 
-  const uploadImage = (event) => {
+  const submitForm = (event) => {
+    event.preventDefault()
     const uploadTask =  storage.ref(`images/${image.name}`).put(image)
     uploadTask.on('state_changed', 
     (snapshot) => {
@@ -30,37 +37,87 @@ const UploadItem = () => {
     () => {
       //completion function
       storage.ref('images').child(image.name).getDownloadURL().then( (url) => {
-        setImageUrl(url)
+        const itemObj = {
+          name: itemName,
+          price: itemPrice,
+          description: itemDescription,
+          imageUrl: url,
+          sellerEmail: firebase.auth().currentUser.email
+        }
+
+        firebase
+          .firestore()
+          .collection('items')
+          .add(itemObj)
       })
     })
   }
 
+  useEffect( () => {
+    
+  }, [])
+
   return (
-    <div>
-      <input 
-        type="file" 
-        accept="image/*" 
-        onChange={(event) => handleChange(event)}
-      />
-      <button onClick={(event) => uploadImage(event)}>Upload</button>
-      <br />
-      <progress 
-        value={progress}
-        max="100" 
-        style={ {
-          display: (progress > 0) && (progress < 100) ? "block": "none", 
-        }}
-      />
-      <br />
-      <img 
-        src={imageUrl} 
-        style={{
-          height: "500px",
-          width: "500px",
-          display: (imageUrl === '') ? "none": "block", 
-        }}
-        alt=""
-      />
+    <div className={styles.uploadItem}>
+      <Navbar />
+      <form className={styles.itemUploadForm}>
+        <label className={styles.titleLabel}>Upload an Item</label>
+        <input 
+          type="text" 
+          placeholder="Enter name of item" 
+          className={styles.textFields}
+          onChange={(event) => {
+            setItemName(event.target.value)
+          }}
+        />
+
+        <input 
+          type="text" 
+          placeholder="Enter price of the item" 
+          className={styles.textFields}
+          onChange={(event) => {
+            setItemPrice(event.target.value)
+          }} 
+        />
+
+        <TextareaAutosize
+          inputRef={(tag) => {
+            this.textarea = tag
+            this.textarea.focus()
+          }}
+          minRows={2}
+          placeholder="Enter description (max 100 chars)"
+          maxLength={100}
+          className={styles.textFields}
+          onChange={(event) => {
+            setItemDescription(event.target.value)
+          }}
+        />
+        <div className={styles}>
+          <label className={styles.imageUploadLabel}>Click browse button to upload an image</label>
+          <input 
+            type="file" 
+            accept="image/*" 
+            className={styles.imageSelector}
+            onChange={(event) => selectImage(event)}
+          />
+        </div>
+        <progress 
+          value={progress}
+          max="100" 
+          className={styles.progressBar}
+          style={ {
+            display: (progress > 0) && (progress < 100) ? "block": "none", 
+          }}
+        />
+        <br />
+        <button 
+          className={styles.submitFormButton}
+          onClick={(event) => submitForm(event)}
+        >
+          Upload
+        </button>
+      </form>
     </div>
   )
 }

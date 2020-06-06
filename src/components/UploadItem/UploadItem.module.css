@@ -1,1 +1,122 @@
-/* No CSS *//*# sourceMappingURL=UploadItem.module.css.map */
+.uploadItem {
+  height: 92vh;
+  width: 100vw;
+  background-image: url("../LandingPage/hero.jpg");
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+}
+
+.itemUploadForm {
+  margin: 0 auto;
+  width: 30%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  position: absolute;
+  padding: 40px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+  background: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 8px 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 8px 10px rgba(0, 0, 0, 0.5);
+}
+
+.titleLabel {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: -15px;
+  font-size: 35px;
+  margin-bottom: 10px;
+  color: #2b2b2b;
+}
+
+.textFields {
+  letter-spacing: 1.25px;
+  font-size: 20px;
+  padding: 4px 8px;
+  margin-bottom: 10px;
+  background: none;
+  color: #2b2b2b;
+  border: 2px solid #2979ff;
+  border-radius: 5px;
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+}
+
+.textFields::-webkit-input-placeholder {
+  color: #2b2b2b;
+  font-size: 15px;
+}
+
+.textFields:-ms-input-placeholder {
+  color: #2b2b2b;
+  font-size: 15px;
+}
+
+.textFields::-ms-input-placeholder {
+  color: #2b2b2b;
+  font-size: 15px;
+}
+
+.textFields::placeholder {
+  color: #2b2b2b;
+  font-size: 15px;
+}
+
+.textFields:focus {
+  outline: none;
+}
+
+textarea {
+  resize: none;
+}
+
+.imageUploadLabel {
+  margin: 0 auto;
+}
+
+.submitFormButton {
+  cursor: pointer;
+  font-size: 20px;
+  padding: 4px 8px;
+  background: none;
+  color: #2b2b2b;
+  border: 2px solid #2979ff;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+}
+
+.submitFormButton:hover {
+  background-color: #2979ff;
+  color: #fafafa;
+}
+
+.submitFormButton:focus {
+  outline: none;
+}
+
+.submitFormButton:active {
+  outline: none;
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
+/*# sourceMappingURL=UploadItem.module.css.map */
