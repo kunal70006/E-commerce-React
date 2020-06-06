@@ -6,3 +6,4 @@ export { default as Navbar } from "./Navbar/Navbar";
 export { default as Register } from "./Register/Register";
 export { default as Login } from "./Login/Login";
 export { default as Details } from "./Details/Details";
+export { default as UploadItem } from "./UploadItem/UploadItem";

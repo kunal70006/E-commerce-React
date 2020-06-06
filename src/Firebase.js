@@ -1,5 +1,6 @@
 import * as firebase from 'firebase'
 import 'firebase/firestore'
+import 'firebase/storage'
 
 
 var firebaseConfig = {
@@ -15,4 +16,13 @@ var firebaseConfig = {
 
 firebase.initializeApp(firebaseConfig);
 
-export default firebase
+const storage = firebase.storage()
+
+// export {
+//   storage, firebase as default
+// }
+
+// export default storage;
+// export default firebase;
+export {firebase as default}
+export {storage}

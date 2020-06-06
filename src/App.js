@@ -5,9 +5,9 @@ import {
   Shop,
   About,
   Cart,
-  Details,
   Register,
   Login,
+  UploadItem,
 } from "./components";
 import "./App.css";
 
@@ -23,6 +23,7 @@ const App = () => {
           <Route exact path="/register" component={Register} />
           <Route exact path="/login" component={Login} />
           <Route exact path="/details" component={Details} />
+          <Route exact path="/uploadItem" component={UploadItem} />
         </Switch>
       </div>
     </Router>
