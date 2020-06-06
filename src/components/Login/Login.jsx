@@ -9,12 +9,12 @@ const Login = () => {
 
   const history = useHistory();
 
-  const registerButtonDidClick = (event) => {
+  const loginButtonDidClick = (event) => {
     event.preventDefault();
     firebase.auth().signInWithEmailAndPassword(email, password).then( (user) => {
       localStorage.setItem("email", user.user.email);
-        localStorage.setItem("uid", user.user.uid);
-        history.push("/");
+      localStorage.setItem("uid", user.user.uid);
+      history.push("/");
     }).catch( (error) => {
       alert(error.code, error.message);
     });
@@ -44,7 +44,7 @@ const Login = () => {
 
           <button
             className={styles.loginButton}
-            onClick={registerButtonDidClick}
+            onClick={loginButtonDidClick}
           >
             Login
           </button>
