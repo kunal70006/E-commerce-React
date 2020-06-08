@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import firebase from "../../Firebase";
 import styles from "./Login.module.css";
 import { useHistory } from "react-router-dom";
+import Navbar from "../Navbar/Navbar";
 
 const Login = () => {
   const [email, setEmail] = useState("");
@@ -11,18 +12,23 @@ const Login = () => {
 
   const loginButtonDidClick = (event) => {
     event.preventDefault();
-    firebase.auth().signInWithEmailAndPassword(email, password).then( (user) => {
-      localStorage.setItem("email", user.user.email);
-      localStorage.setItem("uid", user.user.uid);
-      history.push("/");
-    }).catch( (error) => {
-      alert(error.code, error.message);
-    });
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then((user) => {
+        localStorage.setItem("email", user.user.email);
+        localStorage.setItem("uid", user.user.uid);
+        history.push("/");
+      })
+      .catch((error) => {
+        alert(error.code, error.message);
+      });
   };
 
   return (
     <div className={styles.Login}>
       <div className={styles.heroImg}>
+        <Navbar />
         <div className={styles.loginContainer}>
           <h4>Login</h4>
           <input
@@ -42,10 +48,7 @@ const Login = () => {
             }}
           />
 
-          <button
-            className={styles.loginButton}
-            onClick={loginButtonDidClick}
-          >
+          <button className={styles.loginButton} onClick={loginButtonDidClick}>
             Login
           </button>
 

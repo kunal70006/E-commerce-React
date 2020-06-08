@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import {useHistory} from "react-router-dom"
+import { useHistory } from "react-router-dom";
 import firebase from "../../Firebase";
 import styles from "./Register.module.css";
+import Navbar from "../Navbar/Navbar";
 
 const Register = (props) => {
   const [email, setEmail] = useState("");
@@ -28,6 +29,7 @@ const Register = (props) => {
   return (
     <div className={styles.Register}>
       <div className={styles.heroImg}>
+        <Navbar />
         <div className={styles.registerContainer}>
           <h4>Register</h4>
           <input
