@@ -8,7 +8,6 @@ import TextareaAutosize from "react-textarea-autosize";
 
 const UploadItem = () => {
   const [image, setImage] = useState({});
-  const [progress, setProgress] = useState(0);
 
   const [itemName, setItemName] = useState("");
   const [itemPrice, setItemPrice] = useState("");
@@ -27,10 +26,6 @@ const UploadItem = () => {
       "state_changed",
       (snapshot) => {
         // progress function
-        const progress = Math.round(
-          (snapshot.bytesTransferred / snapshot.totalBytes) * 100
-        );
-        setProgress(progress);
       },
       (error) => {
         //error handler

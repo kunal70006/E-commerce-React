@@ -4,10 +4,6 @@ nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: row;
-          flex-direction: row;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -86,5 +82,32 @@ nav {
 .loginBtn:active {
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
+}
+
+@media (max-width: 768px) {
+  nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    background-color: white;
+  }
+  .links {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    width: 100%;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    padding: 5px auto 10px auto;
+  }
+  .nav_links {
+    margin-bottom: 5px;
+  }
+  .cartBtn,
+  .loginBtn {
+    display: none;
+  }
 }
 /*# sourceMappingURL=Navbar.module.css.map */
