@@ -40,7 +40,7 @@ const Shop = () => {
   //   },
   // ];
 
-  const tempItems = []
+  let tempItems = []
 
   useEffect( () => {
     firebase.auth().onAuthStateChanged( (user) => {
