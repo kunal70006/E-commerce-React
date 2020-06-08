@@ -1,19 +1,20 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState } from 'react'
 import styles from './UploadItem.module.css'
 import { storage } from '../../Firebase'
 import firebase from '../../Firebase'
 import Navbar from '../Navbar/Navbar'
 import TextareaAutosize from 'react-textarea-autosize';
+//npm install react-textarea-autosize
+
 
 const UploadItem = () => {
 
-  const [image, setImage] = useState(null)
-  const [imageUrl, setImageUrl] = useState('')
+  const [image, setImage] = useState({})
   const [progress, setProgress] = useState(0)
 
-  const [itemName, setItemName] = useState(null)
-  const [itemPrice, setItemPrice] = useState(null)
-  const [itemDescription, setItemDescription] = useState(null)
+  const [itemName, setItemName] = useState("")
+  const [itemPrice, setItemPrice] = useState("")
+  const [itemDescription, setItemDescription] = useState("")
     
   const selectImage = (event) => {
     if (event.target.files[0]) {
@@ -53,10 +54,6 @@ const UploadItem = () => {
     })
   }
 
-  useEffect( () => {
-    
-  }, [])
-
   return (
     <div className={styles.uploadItem}>
       <Navbar />
@@ -69,6 +66,7 @@ const UploadItem = () => {
           onChange={(event) => {
             setItemName(event.target.value)
           }}
+          value={itemName}
         />
 
         <input 
@@ -78,6 +76,7 @@ const UploadItem = () => {
           onChange={(event) => {
             setItemPrice(event.target.value)
           }} 
+          value={itemPrice}
         />
 
         <TextareaAutosize
@@ -92,8 +91,9 @@ const UploadItem = () => {
           onChange={(event) => {
             setItemDescription(event.target.value)
           }}
+          value={itemDescription}
         />
-        <div className={styles}>
+        <div>
           <label className={styles.imageUploadLabel}>Click browse button to upload an image</label>
           <input 
             type="file" 

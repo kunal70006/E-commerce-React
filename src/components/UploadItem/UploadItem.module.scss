@@ -2,6 +2,9 @@
   height: 92vh;
   width: 100vw;
 
+  min-width: 650px;
+  min-height: 500px;
+
   background-image: url("../LandingPage/hero.jpg");
 
   height: 100%;
@@ -19,6 +22,9 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
+
+  min-width: 400px;
+  max-height: 400px;
 
   position: absolute;
   padding: 40px;
