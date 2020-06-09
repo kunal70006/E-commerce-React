@@ -1,58 +1,12 @@
 .uploadItem {
-  height: 92vh;
-  width: 100vw;
-  min-width: 650px;
-  min-height: 500px;
-  background-image: url("../LandingPage/hero.jpg");
-  height: 100%;
-  width: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: absolute;
+  height: 100vh;
 }
 
-.itemUploadForm {
-  margin: 0 auto;
-  width: 30%;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  min-width: 400px;
-  max-height: 400px;
-  position: absolute;
-  padding: 40px;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  text-align: center;
-  background: white;
-  border-radius: 5px;
-  -webkit-box-shadow: 0px 0px 8px 10px rgba(0, 0, 0, 0.5);
-          box-shadow: 0px 0px 8px 10px rgba(0, 0, 0, 0.5);
-}
-
-.titleLabel {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-top: -15px;
-  font-size: 35px;
-  margin-bottom: 10px;
-  color: #2b2b2b;
-}
-
-.textFields {
-  letter-spacing: 1.25px;
-  font-size: 20px;
+.uploadItem input[type="text"],
+.uploadItem .textFields {
+  width: 90%;
+  letter-spacing: 1.5px;
+  font-size: 25px;
   padding: 4px 8px;
   margin-bottom: 10px;
   background: none;
@@ -63,27 +17,117 @@
   transition: 0.2s ease-in;
 }
 
-.textFields::-webkit-input-placeholder {
+.uploadItem input[type="text"]::-webkit-input-placeholder,
+.uploadItem .textFields::-webkit-input-placeholder {
+  color: #2b2b2b;
+  font-size: 20px;
+}
+
+.uploadItem input[type="text"]:-ms-input-placeholder,
+.uploadItem .textFields:-ms-input-placeholder {
+  color: #2b2b2b;
+  font-size: 20px;
+}
+
+.uploadItem input[type="text"]::-ms-input-placeholder,
+.uploadItem .textFields::-ms-input-placeholder {
+  color: #2b2b2b;
+  font-size: 20px;
+}
+
+.uploadItem input[type="text"]::placeholder,
+.uploadItem .textFields::placeholder {
+  color: #2b2b2b;
+  font-size: 20px;
+}
+
+.uploadItem input[type="text"]:focus,
+.uploadItem .textFields:focus {
+  outline: none;
+}
+
+.heroImg {
+  background-image: url("../LandingPage/hero.jpg");
+  height: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: absolute;
+}
+
+.uploadItemContainer {
+  position: absolute;
+  width: 400px;
+  padding: 40px;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
+  text-align: center;
+  background: white;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 8px 10px rgba(0, 0, 0, 0.5);
+          box-shadow: 0px 0px 8px 10px rgba(0, 0, 0, 0.5);
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+}
+
+.uploadItemContainer h4 {
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin-top: -15px;
+  font-size: 35px;
+  margin-bottom: 10px;
+  color: #2b2b2b;
+}
+
+.uploadItemContainer h3 {
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.uploadItemContainer input[type="file"] {
+  width: 80%;
+  letter-spacing: 1.5px;
+  font-size: 15px;
+  padding: 4px 8px;
+  background: none;
+  color: #2b2b2b;
+  -webkit-transition: 0.2s ease-in;
+  transition: 0.2s ease-in;
+}
+
+.uploadItemContainer input[type="file"]::-webkit-input-placeholder {
   color: #2b2b2b;
   font-size: 15px;
 }
 
-.textFields:-ms-input-placeholder {
+.uploadItemContainer input[type="file"]:-ms-input-placeholder {
   color: #2b2b2b;
   font-size: 15px;
 }
 
-.textFields::-ms-input-placeholder {
+.uploadItemContainer input[type="file"]::-ms-input-placeholder {
   color: #2b2b2b;
   font-size: 15px;
 }
 
-.textFields::placeholder {
+.uploadItemContainer input[type="file"]::placeholder {
   color: #2b2b2b;
   font-size: 15px;
 }
 
-.textFields:focus {
+.uploadItemContainer input[type="file"]:focus {
   outline: none;
 }
 
@@ -91,20 +135,15 @@ textarea {
   resize: none;
 }
 
-.imageUploadLabel {
-  margin: 0 auto;
-}
-
 .submitFormButton {
   cursor: pointer;
   font-size: 20px;
   padding: 4px 8px;
+  margin-top: 10px;
   background: none;
   color: #2b2b2b;
   border: 2px solid #2979ff;
   border-radius: 5px;
-  margin-top: 10px;
-  margin-bottom: 10px;
   -webkit-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
 }
