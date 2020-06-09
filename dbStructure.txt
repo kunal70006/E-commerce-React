@@ -13,7 +13,7 @@ items {
 }
 
 users {
-  uid: {
+  user1doc: {
     cart {
       item1doc: {
         itemName: 'abc'

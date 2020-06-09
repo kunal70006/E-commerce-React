@@ -90,7 +90,15 @@ const Shop = () => {
             <div key={item.id} className={styles.cardContainer}>
               <div
                 className={styles.card}
-                onClick={() => <Details name={item.name} price={item.price} />}
+                // onClick={() => <Details name={item.name} price={item.price} />}
+                onClick={ () => {
+                  history.push({
+                    pathname: '/details',
+                    state: {
+                      item: item
+                    }
+                  })
+                }}
               >
                 <img
                   src={item.imageUrl}
