@@ -47,23 +47,22 @@ const Shop = () => {
       <div className={styles.container}>
         {items.map((item) => {
           return (
-            <div key={item.id} className={styles.cardContainer}>
-<<<<<<< HEAD
+            <div 
+              key={item.id} 
+              className={styles.cardContainer}
+              onClick={ () => {
+                history.push({
+                  pathname: '/details',
+                  currentItem: item
+                })
+              }}
+            >
               <div
                 className={styles.card}
                 // onClick={() => <Details name={item.name} price={item.price} />}
-                onClick={ () => {
-                  history.push({
-                    pathname: '/details',
-                    state: {
-                      item: item
-                    }
-                  })
-                }}
-              >
-=======
+                
+              />
               <div className={styles.card}>
->>>>>>> bf290ce8cae925bfb86452b4ea640bd962ea5bf0
                 <img
                   src={item.imageUrl}
                   alt={item.name}
