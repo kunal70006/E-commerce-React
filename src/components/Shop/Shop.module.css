@@ -89,7 +89,7 @@
   font-size: 30px;
 }
 
-.toCartBtn {
+.details {
   cursor: pointer;
   font-size: 20px;
   padding: 5px 10px;
@@ -103,17 +103,17 @@
   transition: 0.2s ease;
 }
 
-.toCartBtn:hover {
+.details:hover {
   color: #fafafa;
   background: #2979ff;
 }
 
-.toCartBtn:active {
+.details:active {
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
 }
 
-.toCartBtn:focus {
+.details:focus {
   outline: none;
 }
 /*# sourceMappingURL=Shop.module.css.map */

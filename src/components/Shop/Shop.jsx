@@ -10,35 +10,35 @@ const Shop = () => {
   let tempItems = [];
 
   useEffect(() => {
-    firebase.auth().onAuthStateChanged((user) => {
-      if (!user) {
-        history.push("/login");
+    /*firebase.auth().onAuthStateChanged((user) => {
+      if (user) {
+        //history.push("/login");
+        
       } else {
-        firebase
-          .firestore()
-          .collection("items")
-          .get()
-          .then((docs) => {
-            docs.forEach((doc) => {
-              const itemObj = {
-                name: doc.data().name,
-                price: doc.data().price,
-                description: doc.data().description,
-                imageUrl: doc.data().imageUrl,
-                sellerEmail: doc.data().sellerEmail,
-                id: doc.id,
-              };
-              tempItems.push(itemObj);
-            });
-          })
-          .then(() => {
-            setItems(tempItems);
-          });
       }
-    });
-  }, [history, tempItems]);
+    });*/
 
-  //const displayshit = (event) => {};
+    firebase
+      .firestore()
+      .collection("items")
+      .get()
+      .then((docs) => {
+        docs.forEach((doc) => {
+          const itemObj = {
+            name: doc.data().name,
+            price: doc.data().price,
+            description: doc.data().description,
+            imageUrl: doc.data().imageUrl,
+            sellerEmail: doc.data().sellerEmail,
+            id: doc.id,
+          };
+          tempItems.push(itemObj);
+        });
+      })
+      .then(() => {
+        setItems(tempItems);
+      });
+  }, []);
 
   return (
     <div className={styles.Shop}>
@@ -47,21 +47,16 @@ const Shop = () => {
       <div className={styles.container}>
         {items.map((item) => {
           return (
-            <div 
-              key={item.id} 
+            <div
+              key={item.id}
               className={styles.cardContainer}
-              onClick={ () => {
+              onClick={() => {
                 history.push({
-                  pathname: '/details',
-                  currentItem: item
-                })
+                  pathname: "/details",
+                  currentItem: item,
+                });
               }}
             >
-              <div
-                className={styles.card}
-                // onClick={() => <Details name={item.name} price={item.price} />}
-                
-              />
               <div className={styles.card}>
                 <img
                   src={item.imageUrl}
@@ -71,7 +66,7 @@ const Shop = () => {
                 <div className={styles.aboutCardContainer}>
                   <h4>{item.name}</h4>
                   <p className={styles.price}>${item.price}</p>
-                  <button className={styles.toCartBtn}>Add to cart</button>
+                  <button className={styles.details}>Details</button>
                 </div>
               </div>
             </div>
