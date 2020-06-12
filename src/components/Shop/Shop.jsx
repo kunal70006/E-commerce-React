@@ -7,16 +7,9 @@ import firebase from "../../Firebase";
 const Shop = () => {
   const [items, setItems] = useState([]);
   const history = useHistory();
-  let tempItems = [];
 
   useEffect(() => {
-    /*firebase.auth().onAuthStateChanged((user) => {
-      if (user) {
-        //history.push("/login");
-        
-      } else {
-      }
-    });*/
+    let tempItems = [];
 
     firebase
       .firestore()

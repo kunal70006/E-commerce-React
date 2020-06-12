@@ -1,1 +1,126 @@
-/* No CSS *//*# sourceMappingURL=Details.module.css.map */
+.details {
+  height: 100vh;
+  letter-spacing: 1.5px;
+}
+
+.detailsContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: start;
+      -ms-flex-pack: start;
+          justify-content: flex-start;
+  background-color: white;
+  margin: 1rem auto 1rem auto;
+  padding: 1rem;
+  height: 80vh;
+  width: 95%;
+}
+
+.detailsImgContainer {
+  margin-left: 2rem;
+}
+
+.productImg {
+  height: 20rem;
+  width: 20rem;
+}
+
+.detailsTxtContainer {
+  margin: 0 1rem 0 2rem;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+  color: #00344b;
+}
+
+.productName {
+  text-transform: capitalize;
+  font-size: 30px;
+  margin-bottom: 1.5rem;
+}
+
+.sellerID {
+  margin-bottom: 1rem;
+}
+
+.productDesc {
+  font-weight: 500;
+  font-size: 18px;
+  margin-bottom: 1.5rem;
+}
+
+.productPrice {
+  font-size: 25px;
+  margin-bottom: 2rem;
+}
+
+.btns {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+
+.productBtns {
+  cursor: pointer;
+  background: none;
+  border: 2px solid #448aff;
+  border-radius: 5px;
+  font-size: 25px;
+  color: #2d2d2d;
+  padding: 5px 10px;
+  -webkit-transition: 0.3s ease;
+  transition: 0.3s ease;
+}
+
+.productBtns:hover {
+  background: #448aff;
+  color: #fafafa;
+}
+
+.productBtns:focus {
+  outline: none;
+}
+
+.productBtns:active {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
+
+@media only screen and (max-width: 768px) {
+  .detailsContainer {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    margin-top: 10px;
+  }
+  .productImg {
+    height: 200px;
+    width: 200px;
+  }
+  .btns {
+    margin-bottom: 4rem;
+  }
+  .productBtns {
+    font-size: 1.25rem;
+  }
+}
+/*# sourceMappingURL=Details.module.css.map */
