@@ -4,7 +4,7 @@ import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   const history = useHistory();
-  return (
+  /*return (
     <div className={styles.parent}>
       <nav className={styles.Navbar}>
         <div className={styles.links}>
@@ -30,6 +30,56 @@ const Navbar = () => {
         </div>
         <div className={styles.loginBtn} onClick={() => history.push("/login")}>
           Login
+        </div>
+      </nav>
+    </div>
+  );*/
+
+  return (
+    <div className={styles.navbar}>
+      <nav>
+        <ul className={styles.navLinks}>
+          <div className={styles.temp1}>
+            <li className={styles.header}>
+              <h2 className={styles.title} onClick={() => history.push("/")}>
+                <img
+                  src={require("./icon.ico")}
+                  alt="logo"
+                  className={styles.logo}
+                />
+                Amaxon
+              </h2>
+            </li>
+            <li className={styles.links}>
+              <h2 onClick={() => history.push("/shop")}>Shop</h2>
+            </li>
+            <li className={styles.links}>
+              <h2 onClick={() => history.push("/about")}>About</h2>
+            </li>
+          </div>
+          <div className={styles.temp2}>
+            <li className={styles.links}>
+              <button
+                className={styles.navBtns}
+                onClick={() => history.push("/login")}
+              >
+                Login
+              </button>
+            </li>
+            <li className={styles.links}>
+              <button
+                className={styles.navBtns}
+                onClick={() => history.push("/cart")}
+              >
+                Cart
+              </button>
+            </li>
+          </div>
+        </ul>
+        <div className={styles.burger}>
+          <div className={styles.line}></div>
+          <div className={styles.line}></div>
+          <div className={styles.line}></div>
         </div>
       </nav>
     </div>
