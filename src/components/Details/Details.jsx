@@ -1,41 +1,41 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../Navbar/Navbar";
 import styles from "./Details.module.css";
-import { useLocation, useHistory } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
+import firebase from '../../Firebase'
 
 const Details = () => {
   const history = useHistory();
-  /*const [currentItem, setCurrentItem] = useState({
+  const location = useLocation();
+
+  const email = localStorage.getItem("email")
+
+  const [currentItem, setCurrentItem] = useState({
     name: "",
     price: "",
     description: "",
     imageUrl: "",
     sellerEmail: "",
-    id: "",
-  });
-
-  const location = useLocation();
+    id: ""
+  })
 
   useEffect(() => {
-    setCurrentItem(location.currentItem);
-  }, [location]);
+    if (typeof location.id === 'undefined') {
+      let id = sessionStorage.getItem(email)
+      firebase.firestore().collection("items").doc(id).get().then( (data) => {
+        setCurrentItem(data.data()) 
+      })
+    } else {
+      sessionStorage.setItem(email, location.id);
+      firebase.firestore().collection("items").doc(location.id).get().then( (data) => {
+        setCurrentItem(data.data()) 
+      })
+    }
+  }, []);
 
-  return (
-    <div className={styles.Details}>
-      <Navbar />
-      <div className={styles.detailsContainer}>
-        <div className={styles.detailsTxtContainer}>
-          <h3>Item name: {currentItem.name}</h3>
-          <h3>Item price: {currentItem.price}</h3>
-          <h3>Item description: {currentItem.description}</h3>
-          <h3>Seller email: {currentItem.sellerEmail}</h3>
-        </div>
-        <div className={styles.detailsImgContainer}>
-          <img src={currentItem.imageUrl} alt={currentItem.name} />
-        </div>
-      </div>
-    </div>
-  );*/
+  useEffect( () => {
+    console.log(currentItem)
+  }, [currentItem])
 
   return (
     <div className={styles.details}>
@@ -44,24 +44,20 @@ const Details = () => {
         <div className={styles.detailsImgContainer}>
           <img
             className={styles.productImg}
-            src={require("../Shop/2.jpg")}
-            alt="name"
+            src={currentItem.imageUrl}
+            alt={currentItem.name}
           />
         </div>
         <div className={styles.detailsTxtContainer}>
           <h3 className={styles.productName}>
-            Name Lorem ipsum dolor sit amet.
+            {currentItem.name}
           </h3>
-          <h3 className={styles.sellerID}>Sold by: seller email</h3>
+          <h3 className={styles.sellerID}>Sold by: {currentItem.sellerEmail} </h3>
           <h3 className={styles.productDesc}>
-            <strong>Description:</strong> Lorem ipsum dolor sit amet consectetur
-            adipisicing elit. Aliquid maxime ex ea sequi aspernatur. Fugiat, ab
-            eaque. Excepturi doloremque consequuntur quos dignissimos
-            praesentium, voluptate omnis laudantium obcaecati hic exercitationem
-            quidem repellendus voluptates molestias vel facilis officiis numquam
-            amet quis ducimus.
+            <strong>Description: </strong> 
+            {currentItem.description}
           </h3>
-          <h3 className={styles.productPrice}>Price: $69</h3>
+          <h3 className={styles.productPrice}>Price: {currentItem.price} </h3>
           <div className={styles.btns}>
             <button
               className={styles.productBtns}

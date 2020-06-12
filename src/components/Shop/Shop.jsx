@@ -46,7 +46,7 @@ const Shop = () => {
               onClick={() => {
                 history.push({
                   pathname: "/details",
-                  currentItem: item,
+                  id: item.id
                 });
               }}
             >
