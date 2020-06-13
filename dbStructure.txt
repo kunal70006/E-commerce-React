@@ -19,10 +19,10 @@ users {
         itemName: 'abc'
         itemPrice: 69
         itemDescription: 'rock and roll bitches'
+        id: 'abc123shit'
         itemPictures: 'some binary shit here'
         seller: 'harambe'
         quantity: 69
-        amountPerItem: 420
       }
       item2doc: {
 

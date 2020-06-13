@@ -21,21 +21,49 @@ const Details = () => {
 
   useEffect(() => {
     if (typeof location.id === 'undefined') {
-      let id = sessionStorage.getItem(email)
+      let id = sessionStorage.getItem("brens")
       firebase.firestore().collection("items").doc(id).get().then( (data) => {
         setCurrentItem(data.data()) 
       })
     } else {
-      sessionStorage.setItem(email, location.id);
+      sessionStorage.setItem("brens", location.id);
       firebase.firestore().collection("items").doc(location.id).get().then( (data) => {
         setCurrentItem(data.data()) 
       })
     }
   }, []);
 
-  useEffect( () => {
-    console.log(currentItem)
-  }, [currentItem])
+  const addToCartButtonDidClick = () => {
+    firebase.auth().onAuthStateChanged( (user) => {
+      if (user) {
+        const itemInCartObj = {
+          name: currentItem.name,
+          price: currentItem.price,
+          image: currentItem.imageUrl,
+          itemId: sessionStorage.getItem("brens"),
+          sellerEmail: currentItem.sellerEmail,
+          quantity: 1
+        }
+
+        firebase.firestore().collection('users').doc(user.email).collection('cart').where('itemId', '==', itemInCartObj.itemId).get().then( (docs) => {
+          console.log(docs.docs.length)
+          if (docs.docs.length === 0) {
+            firebase.firestore().collection('users').doc(user.email).set({email: user.email}).then( (doc) => {
+              firebase.firestore().collection('users').doc(user.email).collection('cart').add(itemInCartObj).then( () => {
+                alert("Item added successfully")
+                docs.docs.length++;
+              })
+            })
+          } else {
+            alert("Item already in cart")
+          } 
+        })
+      } else {
+        alert("You have to log in to add this item to your cart")
+        history.push('/login')
+      }
+    })
+  }
 
   return (
     <div className={styles.details}>
@@ -67,7 +95,7 @@ const Details = () => {
             </button>
             <button
               className={styles.productBtns}
-              onClick={() => history.push("/cart")}
+              onClick={() => addToCartButtonDidClick()}
             >
               Add to Cart
             </button>
