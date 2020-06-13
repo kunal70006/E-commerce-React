@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   const history = useHistory();
+  const [toggle, setToggle] = useState(false);
   /*return (
     <div className={styles.parent}>
       <nav className={styles.Navbar}>
@@ -33,7 +34,13 @@ const Navbar = () => {
         </div>
       </nav>
     </div>
-  );*/
+  );
+
+  const handleToggle = (event) => {
+    //event.preventDefault();
+    toggle = true;
+    console.log(toggle);
+  };*/
 
   return (
     <div className={styles.navbar}>
@@ -76,7 +83,7 @@ const Navbar = () => {
             </li>
           </div>
         </ul>
-        <div className={styles.burger}>
+        <div className={styles.burger} onClick={() => setToggle(!toggle)}>
           <div className={styles.line}></div>
           <div className={styles.line}></div>
           <div className={styles.line}></div>

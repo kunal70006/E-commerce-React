@@ -72,13 +72,33 @@ nav {
   }
 }
 
-@media only screen and (max-width: 768px) {
-  /* nav {
-    top: 0;
-    left: 0;
-    width: 90%;
+.active {
+  nav {
     height: 100vh;
-  }*/
+  }
+}
+
+.burger {
+  display: none;
+  flex-direction: column;
+  justify-content: center;
+  margin-top: -35px;
+  margin-left: 5px;
+}
+
+.line {
+  cursor: pointer;
+  width: 35px;
+  height: 3px;
+  background: #00344b;
+  margin: 3px;
+}
+
+@media only screen and (max-width: 768px) {
+  .burger {
+    display: flex;
+    cursor: pointer;
+  }
 
   .temp1 {
     width: 100%;
@@ -88,19 +108,5 @@ nav {
   .temp2,
   .links {
     display: none;
-  }
-  .burger {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    margin-top: -35px;
-    margin-left: 5px;
-  }
-
-  .line {
-    width: 35px;
-    height: 3px;
-    background: #00344b;
-    margin: 3px;
   }
 }
