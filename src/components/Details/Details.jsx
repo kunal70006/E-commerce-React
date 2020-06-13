@@ -46,12 +46,10 @@ const Details = () => {
         }
 
         firebase.firestore().collection('users').doc(user.email).collection('cart').where('itemId', '==', itemInCartObj.itemId).get().then( (docs) => {
-          console.log(docs.docs.length)
           if (docs.docs.length === 0) {
             firebase.firestore().collection('users').doc(user.email).set({email: user.email}).then( (doc) => {
               firebase.firestore().collection('users').doc(user.email).collection('cart').add(itemInCartObj).then( () => {
                 alert("Item added successfully")
-                docs.docs.length++;
               })
             })
           } else {
