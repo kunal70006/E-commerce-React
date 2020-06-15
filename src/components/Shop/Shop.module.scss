@@ -1,6 +1,6 @@
 .Shop {
   height: 100vh;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   overflow-x: hidden;
 }
 
@@ -28,7 +28,7 @@
   cursor: pointer;
   max-width: fit-content;
 
-  margin: 30px auto;
+  margin: 30px 2rem;
   padding: 20px;
 
   background-color: white;
@@ -85,12 +85,13 @@
 
   background: none;
 
-  border: 2px solid #448aff;
+  border: 1.5px solid #5e6977;
   border-radius: 4px;
 
   transition: 0.2s ease;
 
   &:hover {
+    border: 1.5px solid #2979ff;
     color: rgb(250, 250, 250);
     background: #2979ff;
   }
@@ -101,5 +102,23 @@
 
   &:focus {
     outline: none;
+  }
+}
+
+@media only screen and (max-width: 992px) {
+  .cardContainer {
+    margin: 1rem auto;
+  }
+}
+
+@media only screen and (max-width: 1200px) {
+  .cardContainer {
+    margin: 1rem auto;
+  }
+}
+
+@media only screen and (max-width: 1500px) {
+  .cardContainer {
+    margin: 1rem auto;
   }
 }

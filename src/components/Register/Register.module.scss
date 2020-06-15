@@ -34,11 +34,11 @@
 
 .Register {
   height: 100vh;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
 
   input[type="email"],
   input[type="password"] {
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
 
     font-size: 25px;
     padding: 4px 8px;
@@ -108,6 +108,19 @@
     padding: 4px;
     &:hover {
       text-decoration: underline;
+    }
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .registerContainer {
+    width: 100%;
+  }
+
+  .Register {
+    input[type="email"],
+    input[type="password"] {
+      font-size: 20px;
     }
   }
 }

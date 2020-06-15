@@ -35,12 +35,12 @@
 
 .Login {
   height: 100vh;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
 }
 
 .Login input[type="email"],
 .Login input[type="password"] {
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   font-size: 25px;
   padding: 4px 8px;
   margin-bottom: 10px;
@@ -117,5 +117,15 @@
 
 .regHref a:hover {
   text-decoration: underline;
+}
+
+@media only screen and (max-width: 768px) {
+  .loginContainer {
+    width: 100%;
+  }
+  .Login input[type="email"],
+  .Login input[type="password"] {
+    font-size: 20px;
+  }
 }
 /*# sourceMappingURL=Login.module.css.map */
