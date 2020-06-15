@@ -107,6 +107,15 @@
 @media only screen and (max-width: 768px) {
   .loginContainer {
     width: 100%;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  .loginButton {
+    width: 40%;
+    margin: 0.5rem auto;
   }
 
   .Login {

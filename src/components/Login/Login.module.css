@@ -122,6 +122,20 @@
 @media only screen and (max-width: 768px) {
   .loginContainer {
     width: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+  }
+  .loginButton {
+    width: 40%;
+    margin: 0.5rem auto;
   }
   .Login input[type="email"],
   .Login input[type="password"] {
