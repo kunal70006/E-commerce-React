@@ -7,6 +7,7 @@ import Navbar from "../Navbar/Navbar";
 const Cart = () => {
   const history = useHistory();
   const [cartItems, setCartItems] = useState([]);
+  let total = 0;
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
@@ -52,12 +53,14 @@ const Cart = () => {
         <h1 className={styles.title}>shopping bag</h1>
         <div className={styles.container}>
           {cartItems.map((item, index) => {
+            {
+              total += Number(item.price);
+            }
             return (
               <div className={styles.item} key={index}>
                 <img className={styles.img} alt="item" src={item.image} />
                 <h3 className={styles.name}>{item.name}</h3>
                 <h3 className={styles.sellerEmail}>{item.sellerEmail}</h3>
-                {/*<h3 className={styles.price}>${item.price} </h3>*/}
                 <h3 className={styles.qty}>
                   <span>
                     <button
@@ -87,6 +90,14 @@ const Cart = () => {
               </div>
             );
           })}
+          <p className={styles.finalPrice}>Total: ${total}</p>
+          <a
+            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
+            target="_blank"
+            className={styles.paymentBtn}
+          >
+            Pay now
+          </a>
         </div>
       </div>
     </div>
