@@ -54,7 +54,7 @@ const Cart = () => {
         <div className={styles.container}>
           {cartItems.map((item, index) => {
             {
-              total += Number(item.price);
+              total += Number(item.price * item.quantity);
             }
             return (
               <div className={styles.item} key={index}>
@@ -78,11 +78,19 @@ const Cart = () => {
                     {item.quantity}
                     <button
                       className={styles.qtyBtns}
-                      onClick={() =>
-                        item.quantity > 1
-                          ? item.quantity--
-                          : (item.quantity = 1)
-                      }
+                      // onClick={() =>
+                      //   item.quantity > 1
+                      //     ? item.quantity--
+                      //     : (item.quantity = 1)
+                      // }
+                      onClick={() => {
+                        if (Number(item.quantity) > 1) {
+                          let newItems = [...cartItems]
+                          item.quantity--;
+                          newItems[index] = item
+                          setCartItems(newItems)
+                        }
+                      }}
                     >
                       -
                     </button>
