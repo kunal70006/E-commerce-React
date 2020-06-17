@@ -39,7 +39,7 @@ const Cart = () => {
       <h1>Here's the data. Format it however you like. Also if you dont see any items, add some first</h1>
       {
         cartItems.map( (item) => {
-          return(
+          return (
             <div>
               <h3>Name: {item.name} </h3>
               <h3>Price: {item.price} </h3>
