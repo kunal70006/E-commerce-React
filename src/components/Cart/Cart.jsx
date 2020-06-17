@@ -65,7 +65,13 @@ const Cart = () => {
                   <span>
                     <button
                       className={styles.qtyBtns}
-                      onClick={() => item.quantity++}
+                      // onClick={() => item.quantity++}
+                      onClick={() => {
+                        let newItems = [...cartItems]
+                        item.quantity++;
+                        newItems[index] = item
+                        setCartItems(newItems)
+                      }}
                     >
                       +
                     </button>
