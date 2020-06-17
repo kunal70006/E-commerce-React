@@ -5,7 +5,7 @@
 .uploadItem input[type="text"],
 .uploadItem .textFields {
   width: 90%;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   font-size: 25px;
   padding: 4px 8px;
   margin-bottom: 10px;
@@ -98,7 +98,7 @@
 
 .uploadItemContainer input[type="file"] {
   width: 80%;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   font-size: 15px;
   padding: 4px 8px;
   background: none;
@@ -161,5 +161,17 @@ textarea {
   outline: none;
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
+}
+
+@media only screen and (max-width: 768px) {
+  .uploadItemContainer {
+    width: 100%;
+  }
+  .uploadItemContainer input[type="text"] {
+    font-size: 20px;
+  }
+  .uploadItemContainer input[type="file"] {
+    font-size: 15px;
+  }
 }
 /*# sourceMappingURL=UploadItem.module.css.map */

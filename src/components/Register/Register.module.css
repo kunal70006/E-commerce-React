@@ -35,12 +35,12 @@
 
 .Register {
   height: 100vh;
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
 }
 
 .Register input[type="email"],
 .Register input[type="password"] {
-  letter-spacing: 1.5px;
+  letter-spacing: 1px;
   font-size: 25px;
   padding: 4px 8px;
   margin-bottom: 10px;
@@ -129,5 +129,15 @@
 
 .loginHref a:hover {
   text-decoration: underline;
+}
+
+@media only screen and (max-width: 768px) {
+  .registerContainer {
+    width: 100%;
+  }
+  .Register input[type="email"],
+  .Register input[type="password"] {
+    font-size: 20px;
+  }
 }
 /*# sourceMappingURL=Register.module.css.map */

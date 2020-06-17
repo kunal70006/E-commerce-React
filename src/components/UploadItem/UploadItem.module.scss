@@ -4,7 +4,7 @@
   input[type="text"],
   .textFields {
     width: 90%;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
 
     font-size: 25px;
     padding: 4px 8px;
@@ -72,7 +72,7 @@
 
   input[type="file"] {
     width: 80%;
-    letter-spacing: 1.5px;
+    letter-spacing: 1px;
 
     font-size: 15px;
     padding: 4px 8px;
@@ -124,5 +124,17 @@ textarea {
   &:active {
     outline: none;
     transform: translateY(-2px);
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .uploadItemContainer {
+    width: 100%;
+    input[type="text"] {
+      font-size: 20px;
+    }
+    input[type="file"] {
+      font-size: 15px;
+    }
   }
 }
