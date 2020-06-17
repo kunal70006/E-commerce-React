@@ -48,22 +48,6 @@ const Cart = () => {
 
   return (
     <div className={styles.Cart}>
-<<<<<<< HEAD
-      <h1>Here's the data. Format it however you like. Also if you dont see any items, add some first</h1>
-      {
-        cartItems.map( (item) => {
-          return (
-            <div>
-              <h3>Name: {item.name} </h3>
-              <h3>Price: {item.price} </h3>
-              <h3>Quantity: {item.quantity} </h3>
-              <h3>Seller: {item.sellerEmail} </h3>
-              <img src={item.image}/>
-            </div> 
-          )
-        })
-      }
-=======
       <Navbar />
       <div className={styles.itemContainer}>
         <h1 className={styles.title}>shopping bag</h1>
@@ -116,7 +100,6 @@ const Cart = () => {
           </a>
         </div>
       </div>
->>>>>>> eef101470621321a25f0daf4f818651a0a032cbd
     </div>
   );
 };
