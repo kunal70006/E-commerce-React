@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
-import styles from "./Cart.module.css";
-import firebase from "../../Firebase";
 import { useHistory } from "react-router-dom";
+import firebase from "../../Firebase";
 import Navbar from "../Navbar/Navbar";
+
+import styles from "./Cart.module.css";
 
 const Cart = () => {
   const history = useHistory();
@@ -42,9 +43,7 @@ const Cart = () => {
     });
   }, []);
 
-  const handleQtyChange = () => {
-    //TODO add inc/dec fn to qty
-  };
+  const handleQtyChange = (event) => {};
 
   return (
     <div className={styles.Cart}>
@@ -67,10 +66,10 @@ const Cart = () => {
                       className={styles.qtyBtns}
                       // onClick={() => item.quantity++}
                       onClick={() => {
-                        let newItems = [...cartItems]
+                        let newItems = [...cartItems];
                         item.quantity++;
-                        newItems[index] = item
-                        setCartItems(newItems)
+                        newItems[index] = item;
+                        setCartItems(newItems);
                       }}
                     >
                       +
@@ -85,17 +84,24 @@ const Cart = () => {
                       // }
                       onClick={() => {
                         if (Number(item.quantity) > 1) {
-                          let newItems = [...cartItems]
+                          let newItems = [...cartItems];
                           item.quantity--;
-                          newItems[index] = item
-                          setCartItems(newItems)
+                          newItems[index] = item;
+                          setCartItems(newItems);
                         }
                       }}
                     >
                       -
                     </button>
+                    <button
+                      className={styles.confirmBtn}
+                      onClick={() => handleQtyChange}
+                    >
+                      Confirm Changes?
+                    </button>
                   </span>
                 </h3>
+
                 <h3 className={styles.total}>
                   $
                   {`

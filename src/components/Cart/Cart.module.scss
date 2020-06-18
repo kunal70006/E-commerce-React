@@ -55,9 +55,31 @@
   width: 100px;
 }
 
-.qtyBtns {
+/*.qty {
+  span {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+
+    button {
+      width: fit-content;
+    }
+  }
+}*/
+
+.qty {
+  span {
+    display: flex;
+    align-items: center;
+  }
+}
+
+.qtyBtns,
+.confirmBtn {
+  cursor: pointer;
   font-size: 15px;
-  margin: 20px;
+  margin: 10px;
   padding: 2px 8px;
 
   background: none;
@@ -80,6 +102,11 @@
   &:active {
     transform: translateY(-2px);
   }
+}
+
+.confirmBtn {
+  font-size: 12px;
+  margin: 5px;
 }
 
 .finalPrice {
