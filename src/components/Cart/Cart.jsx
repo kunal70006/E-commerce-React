@@ -28,6 +28,7 @@ const Cart = () => {
                 price: doc.data().price,
                 quantity: doc.data().quantity,
                 image: doc.data().image,
+                itemId: doc.data().itemId,
                 sellerEmail: doc.data().sellerEmail,
               };
               tempItems.push(cartItemObj);
@@ -43,7 +44,32 @@ const Cart = () => {
     });
   }, []);
 
-  const handleQtyChange = (event) => {};
+  const handleQtyChange = (event, item) => {
+    firebase
+      .firestore()
+      .collection('users')
+      .doc(localStorage.getItem('email'))
+      .collection('cart')
+      .where('itemId', '==', item.itemId)
+      .get().then( (snapshot) => {
+        const itemObj = {
+          name: snapshot.docs[0].data().name,
+          image: snapshot.docs[0].data().image,
+          itemId: snapshot.docs[0].data().itemId,
+          price: snapshot.docs[0].data().itemId,
+          sellerEmail: snapshot.docs[0].data().sellerEmail,
+          quantity: item.quantity
+        }
+        firebase
+          .firestore()
+          .collection('users')
+          .doc(localStorage.getItem('email'))
+          .collection('cart')
+          .doc(snapshot.docs[0].id).update(itemObj).then( () => {
+            console.log("done")
+          })
+      })
+  };
 
   return (
     <div className={styles.Cart}>
@@ -95,7 +121,7 @@ const Cart = () => {
                     </button>
                     <button
                       className={styles.confirmBtn}
-                      onClick={() => handleQtyChange}
+                      onClick={(event) => handleQtyChange(event, item)}
                     >
                       Confirm Changes?
                     </button>
