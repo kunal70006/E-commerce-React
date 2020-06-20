@@ -136,7 +136,7 @@ const Cart = () => {
       });
   };
 
-  const removeItm = (event, item) => {
+  const removeItem = (event, item) => {
     firebase
       .firestore()
       .collection('users')
@@ -210,7 +210,7 @@ const Cart = () => {
                 </h3>
                 <div
                   className={styles.removeItm}
-                  onClick={(event) => removeItm(event, item)}
+                  onClick={(event) => removeItem(event, item)}
                 >
                   X
                 </div>
