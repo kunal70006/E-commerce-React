@@ -55,6 +55,7 @@ const Cart = () => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
         // Old Static Code
+        
         // firebase
         //   .firestore()
         //   .collection("users")
