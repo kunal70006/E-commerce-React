@@ -76,7 +76,8 @@
 }
 
 .qtyBtns,
-.confirmBtn {
+.confirmBtn,
+.removeItm {
   cursor: pointer;
   font-size: 15px;
   margin: 10px;
@@ -104,7 +105,8 @@
   }
 }
 
-.confirmBtn {
+.confirmBtn,
+.removeItm {
   font-size: 12px;
   margin: 5px;
 }
@@ -117,36 +119,7 @@
 }
 
 .paymentBtn {
-  text-transform: capitalize;
-  text-decoration: none;
-  width: fit-content;
-  text-align: center;
-
-  font-size: 15px;
-  color: rgb(43, 43, 43);
   margin: 0 auto 1rem auto;
-  padding: 2px 8px;
-
-  background: none;
-
-  border: 1px solid #5e6977;
-  border-radius: 3px;
-
-  transition: 0.2s ease;
-
-  &:hover {
-    border: 1px solid #448aff;
-    background: #448aff;
-    color: rgb(255, 255, 255);
-  }
-
-  &:focus {
-    outline: none;
-  }
-
-  &:active {
-    transform: translateY(-2px);
-  }
 }
 
 @media only screen and (max-width: 768px) {

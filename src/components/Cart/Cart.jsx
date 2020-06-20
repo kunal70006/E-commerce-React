@@ -1,9 +1,50 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import PaypalExpressBtn from "react-paypal-express-checkout";
 import firebase from "../../Firebase";
 import Navbar from "../Navbar/Navbar";
 
 import styles from "./Cart.module.css";
+
+const Payment = ({ checkoutPrice }) => {
+  const history = useHistory();
+  const onSuccess = () => {
+    console.log("The payment was succeeded!");
+    history.push("/");
+    // You can bind the "payment" object's value to your state or props or whatever here, please see below for sample returned data
+  };
+
+  const onCancel = () => {
+    // User pressed "cancel" or close Paypal's popup!
+    console.log("The payment was cancelled!");
+    // You can bind the "data" object's value to your state or props or whatever here, please see below for sample returned data
+  };
+
+  const onError = (err) => {
+    // The main Paypal's script cannot be loaded or somethings block the loading of that script!
+    console.log("Error!", err);
+    // Because the Paypal's main script is loaded asynchronously from "https://www.paypalobjects.com/api/checkout.js"
+    // => sometimes it may take about 0.5 second for everything to get set, or for the button to appear
+  };
+
+  let env = "sandbox"; // you can set here to 'production' for production
+
+  const client = {
+    sandbox:
+      "AVc4I8St5b9mzRqlU3Pf0u7pUN6ofztTXvAZNGr5HGulpkQcTljJKEcZzUDiDI-8qkZHKFmg4Qt1Qjs2",
+  };
+  return (
+    <PaypalExpressBtn
+      env={env}
+      client={client}
+      currency={"USD"}
+      total={checkoutPrice}
+      onError={onError}
+      onSuccess={onSuccess}
+      onCancel={onCancel}
+    />
+  );
+};
 
 const Cart = () => {
   const history = useHistory();
@@ -47,28 +88,38 @@ const Cart = () => {
   const handleQtyChange = (event, item) => {
     firebase
       .firestore()
-      .collection('users')
-      .doc(localStorage.getItem('email'))
-      .collection('cart')
-      .where('itemId', '==', item.itemId)
-      .get().then( (snapshot) => {
+      .collection("users")
+      .doc(localStorage.getItem("email"))
+      .collection("cart")
+      .where("itemId", "==", item.itemId)
+      .get()
+      .then((snapshot) => {
         const itemObj = {
           name: snapshot.docs[0].data().name,
           image: snapshot.docs[0].data().image,
           itemId: snapshot.docs[0].data().itemId,
-          price: snapshot.docs[0].data().itemId,
+          price: snapshot.docs[0].data().price,
           sellerEmail: snapshot.docs[0].data().sellerEmail,
-          quantity: item.quantity
-        }
+          quantity: Number(item.quantity),
+        };
         firebase
           .firestore()
-          .collection('users')
-          .doc(localStorage.getItem('email'))
-          .collection('cart')
-          .doc(snapshot.docs[0].id).update(itemObj).then( () => {
-            console.log("done")
-          })
-      })
+          .collection("users")
+          .doc(localStorage.getItem("email"))
+          .collection("cart")
+          .doc(snapshot.docs[0].id)
+          .update(itemObj)
+          .then(() => {
+            console.log("done");
+          });
+      });
+  };
+
+  const removeItm = (event, item) => {
+    let tempArr = cartItems.filter(
+      (cartItem) => cartItem.itemId !== item.itemId
+    );
+    setCartItems(tempArr);
   };
 
   return (
@@ -93,7 +144,7 @@ const Cart = () => {
                       // onClick={() => item.quantity++}
                       onClick={() => {
                         let newItems = [...cartItems];
-                        item.quantity++;
+                        item.quantity = Number(item.quantity) + 1;
                         newItems[index] = item;
                         setCartItems(newItems);
                       }}
@@ -103,11 +154,6 @@ const Cart = () => {
                     {item.quantity}
                     <button
                       className={styles.qtyBtns}
-                      // onClick={() =>
-                      //   item.quantity > 1
-                      //     ? item.quantity--
-                      //     : (item.quantity = 1)
-                      // }
                       onClick={() => {
                         if (Number(item.quantity) > 1) {
                           let newItems = [...cartItems];
@@ -127,23 +173,24 @@ const Cart = () => {
                     </button>
                   </span>
                 </h3>
-
                 <h3 className={styles.total}>
                   $
                   {`
-                  ${item.price * item.quantity}`}
+                  ${Number(item.price) * Number(item.quantity)}`}
                 </h3>
+                <div
+                  className={styles.removeItm}
+                  onClick={(event) => removeItm(event, item)}
+                >
+                  X
+                </div>
               </div>
             );
           })}
           <p className={styles.finalPrice}>Total: ${total}</p>
-          <a
-            href="https://www.youtube.com/watch?v=dQw4w9WgXcQ"
-            target="_blank"
-            className={styles.paymentBtn}
-          >
-            Pay now
-          </a>
+          <div className={styles.paymentBtn}>
+            <Payment checkoutPrice={total} />
+          </div>
         </div>
       </div>
     </div>

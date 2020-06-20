@@ -95,7 +95,8 @@
 }
 
 .qtyBtns,
-.confirmBtn {
+.confirmBtn,
+.removeItm {
   cursor: pointer;
   font-size: 15px;
   margin: 10px;
@@ -108,24 +109,28 @@
 }
 
 .qtyBtns:hover,
-.confirmBtn:hover {
+.confirmBtn:hover,
+.removeItm:hover {
   border: 1px solid #448aff;
   background: #448aff;
   color: white;
 }
 
 .qtyBtns:focus,
-.confirmBtn:focus {
+.confirmBtn:focus,
+.removeItm:focus {
   outline: none;
 }
 
 .qtyBtns:active,
-.confirmBtn:active {
+.confirmBtn:active,
+.removeItm:active {
   -webkit-transform: translateY(-2px);
           transform: translateY(-2px);
 }
 
-.confirmBtn {
+.confirmBtn,
+.removeItm {
   font-size: 12px;
   margin: 5px;
 }
@@ -138,36 +143,7 @@
 }
 
 .paymentBtn {
-  text-transform: capitalize;
-  text-decoration: none;
-  width: -webkit-fit-content;
-  width: -moz-fit-content;
-  width: fit-content;
-  text-align: center;
-  font-size: 15px;
-  color: #2b2b2b;
   margin: 0 auto 1rem auto;
-  padding: 2px 8px;
-  background: none;
-  border: 1px solid #5e6977;
-  border-radius: 3px;
-  -webkit-transition: 0.2s ease;
-  transition: 0.2s ease;
-}
-
-.paymentBtn:hover {
-  border: 1px solid #448aff;
-  background: #448aff;
-  color: white;
-}
-
-.paymentBtn:focus {
-  outline: none;
-}
-
-.paymentBtn:active {
-  -webkit-transform: translateY(-2px);
-          transform: translateY(-2px);
 }
 
 @media only screen and (max-width: 768px) {
