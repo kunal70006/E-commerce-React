@@ -54,16 +54,40 @@ const Cart = () => {
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        let tempItems = [];
+        // Old Static Code
+        // firebase
+        //   .firestore()
+        //   .collection("users")
+        //   .doc(user.email)
+        //   .collection("cart")
+        //   .get()
+        //   .then((docs) => {
+        //     let tempItems = [];
+        //     docs.forEach((doc) => {
+        //       const cartItemObj = {
+        //         name: doc.data().name,
+        //         price: doc.data().price,
+        //         quantity: doc.data().quantity,
+        //         image: doc.data().image,
+        //         itemId: doc.data().itemId,
+        //         sellerEmail: doc.data().sellerEmail,
+        //       };
+        //       tempItems.push(cartItemObj);
+        //     });
+        //   })
+        //   .then(() => {
+        //     setCartItems(tempItems);
+        //   });
 
+        //New Listener Code, Real time as fuck
         firebase
           .firestore()
           .collection("users")
           .doc(user.email)
           .collection("cart")
-          .get()
-          .then((docs) => {
-            docs.forEach((doc) => {
+          .onSnapshot( (snapshot) => {
+            setCartItems([])
+            snapshot.forEach( (doc) => {
               const cartItemObj = {
                 name: doc.data().name,
                 price: doc.data().price,
@@ -72,12 +96,9 @@ const Cart = () => {
                 itemId: doc.data().itemId,
                 sellerEmail: doc.data().sellerEmail,
               };
-              tempItems.push(cartItemObj);
-            });
+              setCartItems( (cartItems) => [...cartItems, cartItemObj])
+            })
           })
-          .then(() => {
-            setCartItems(tempItems);
-          });
       } else {
         alert("You have to log in to see this page");
         history.push("/login");
@@ -116,10 +137,19 @@ const Cart = () => {
   };
 
   const removeItm = (event, item) => {
-    let tempArr = cartItems.filter(
-      (cartItem) => cartItem.itemId !== item.itemId
-    );
-    setCartItems(tempArr);
+    firebase
+      .firestore()
+      .collection('users')
+      .doc(localStorage.getItem('email'))
+      .collection('cart')
+      .where("itemId", "==", item.itemId)
+      .get().then( (snapshot) => {
+        snapshot.forEach( (doc) => {
+          doc.ref.delete();
+        })
+      }).then( () => {
+        console.log("Done")
+      })
   };
 
   return (
