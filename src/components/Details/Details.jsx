@@ -22,14 +22,22 @@ const Details = () => {
   useEffect(() => {
     if (typeof location.id === 'undefined') {
       let id = sessionStorage.getItem("brens")
-      firebase.firestore().collection("items").doc(id).get().then( (data) => {
-        setCurrentItem(data.data()) 
-      })
+      firebase
+        .firestore()
+        .collection("items")
+        .doc(id)
+        .get().then( (data) => {
+          setCurrentItem(data.data()) 
+        })
     } else {
       sessionStorage.setItem("brens", location.id);
-      firebase.firestore().collection("items").doc(location.id).get().then( (data) => {
-        setCurrentItem(data.data()) 
-      })
+      firebase
+        .firestore()
+        .collection("items")
+        .doc(location.id)
+        .get().then( (data) => {
+          setCurrentItem(data.data()) 
+        })
     }
   }, []);
 

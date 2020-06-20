@@ -1,34 +1,33 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import firebase from 'firebase'
-import { storage } from 'firebase'
-import { useEffect } from 'react'
+import { useHistory } from 'react-router-dom'
 
 
 const ProductManagement = () => {
   const [items, setItems] = useState([])
+  const history = useHistory()
 
   useEffect( () => {
+    let tempItems = []
     firebase
       .firestore()
       .collection('items')
       .where("sellerEmail", "==", localStorage.getItem("email"))
-      .onSnapshot( (snapshot) => {
-        setItems([])
+      .get().then( (snapshot) => {
         snapshot.forEach( (doc) => {
           const itemObj = {
             name: doc.data().name,
             price: doc.data().price,
             description: doc.data().description,
             imageUrl: doc.data().imageUrl,
+            itemId: doc.id
           }
-          setItems( (items) => [...items, itemObj])
+          tempItems.push(itemObj)
         })
+      }).then( () => {
+        setItems(tempItems)
       })
   })
-
-  const editItem = (event, item) => {
-    
-  }
 
   return(
     <div>
@@ -37,14 +36,24 @@ const ProductManagement = () => {
         {
           items.map( (item) => {
             return(
-              <div>
+              <div 
+                key={item.itemId}
+              >
                 <h4>Item name: {item.name} </h4>
                 <h4>Item price: {item.price} </h4>
                 <h4>Item description: {item.description} </h4>
                 <h4>Item image: </h4>
-                <img src={item.imageUrl} alt="gtfo"/>
-
-                <button onClick={(event) => editItem(event, item)}>Edit</button>
+                <img src={item.imageUrl} alt={item.name}/>
+                <br />
+                <button 
+                  onClick={() => {
+                    console.log("bruhhh")
+                    history.push({
+                      pathname: "/edit",
+                      itemId: item.itemId
+                    })
+                  }}
+                >Edit</button>
               </div>
             )
           })
