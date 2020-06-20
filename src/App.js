@@ -9,6 +9,7 @@ import {
   Login,
   UploadItem,
   Details,
+  ProductManagement
 } from "./components";
 import "./App.css";
 
@@ -25,6 +26,7 @@ const App = () => {
           <Route exact path="/login" component={Login} />
           <Route exact path="/details" component={Details} />
           <Route exact path="/uploadItem" component={UploadItem} />
+          <Route exact path="/productmanagement" component={ProductManagement} />
         </Switch>
       </div>
     </Router>
