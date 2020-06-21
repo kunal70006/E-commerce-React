@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router-dom";
 import styles from "./UploadItem.module.css";
 import { storage } from "../../Firebase";
 import firebase from "../../Firebase";
@@ -8,10 +9,11 @@ import TextareaAutosize from "react-textarea-autosize";
 
 const UploadItem = () => {
   const [image, setImage] = useState({});
-
   const [itemName, setItemName] = useState("");
   const [itemPrice, setItemPrice] = useState("");
   const [itemDescription, setItemDescription] = useState("");
+
+  const history = useHistory();
 
   const selectImage = (event) => {
     if (event.target.files[0]) {
@@ -50,6 +52,8 @@ const UploadItem = () => {
           });
       }
     );
+
+    history.push("/promgmnt");
   };
 
   return (

@@ -2,8 +2,8 @@
     "version": 3,
     "mappings": "",
     "sources": [
-        "Edit.scss"
+        "Edit.module.scss"
     ],
     "names": [],
-    "file": "Edit.css"
+    "file": "Edit.module.css"
 }

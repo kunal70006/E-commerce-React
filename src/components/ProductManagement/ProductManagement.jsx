@@ -1,66 +1,67 @@
-import React, { useState, useEffect } from 'react'
-import firebase from 'firebase'
-import { useHistory } from 'react-router-dom'
-
+import React, { useState, useEffect } from "react";
+import firebase from "firebase";
+import { useHistory } from "react-router-dom";
+import Navbar from "../Navbar/Navbar";
+import styles from "./ProductManagement.module.css";
 
 const ProductManagement = () => {
-  const [items, setItems] = useState([])
-  const history = useHistory()
+  const [items, setItems] = useState([]);
+  const history = useHistory();
 
-  useEffect( () => {
-    let tempItems = []
+  useEffect(() => {
+    let tempItems = [];
     firebase
       .firestore()
-      .collection('items')
+      .collection("items")
       .where("sellerEmail", "==", localStorage.getItem("email"))
-      .get().then( (snapshot) => {
-        snapshot.forEach( (doc) => {
+      .get()
+      .then((snapshot) => {
+        snapshot.forEach((doc) => {
           const itemObj = {
             name: doc.data().name,
             price: doc.data().price,
             description: doc.data().description,
             imageUrl: doc.data().imageUrl,
-            itemId: doc.id
-          }
-          tempItems.push(itemObj)
-        })
-      }).then( () => {
-        setItems(tempItems)
+            itemId: doc.id,
+          };
+          tempItems.push(itemObj);
+        });
       })
-  })
+      .then(() => {
+        setItems(tempItems);
+      });
+  }, []);
 
-  return(
-    <div>
-      <h2>Your listings: </h2>
-      <div>
-        {
-          items.map( (item) => {
-            return(
-              <div 
-                key={item.itemId}
+  return (
+    <div className={styles.ProductManagement}>
+      <Navbar />
+      <h2 className={styles.title}>Listings</h2>
+      <div className={styles.productManagementContainer}>
+        {items.map((item) => {
+          return (
+            <div key={item.itemId} className={styles.item}>
+              <h3 className={styles.name}>name: {item.name} </h3>
+              <h3 className={styles.price}>price: {item.price} </h3>
+              <h3 className={styles.desc}>description: {item.description} </h3>
+              <img className={styles.img} src={item.imageUrl} alt={item.name} />
+              <button
+                className={styles.editBtn}
+                onClick={() => {
+                  console.log("bruhhh");
+                  history.push({
+                    pathname: "/edit",
+                    itemId: item.itemId,
+                  });
+                }}
               >
-                <h4>Item name: {item.name} </h4>
-                <h4>Item price: {item.price} </h4>
-                <h4>Item description: {item.description} </h4>
-                <h4>Item image: </h4>
-                <img src={item.imageUrl} alt={item.name}/>
-                <br />
-                <button 
-                  onClick={() => {
-                    console.log("bruhhh")
-                    history.push({
-                      pathname: "/edit",
-                      itemId: item.itemId
-                    })
-                  }}
-                >Edit</button>
-              </div>
-            )
-          })
-        }
-      </div> 
+                Edit
+              </button>
+            </div>
+          );
+        })}
+      </div>
     </div>
-  )
-}
+  );
+};
 
 export default ProductManagement;
