@@ -47,7 +47,6 @@ const ProductManagement = () => {
               <button
                 className={styles.editBtn}
                 onClick={() => {
-                  console.log("bruhhh");
                   history.push({
                     pathname: "/edit",
                     itemId: item.itemId,
