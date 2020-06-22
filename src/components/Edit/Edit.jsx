@@ -17,7 +17,9 @@ const Edit = () => {
     imageUrl: "",
   });
 
-  const [isDisabled, setDisabled] = useState(false);
+  const [isNameFieldDisabled, setIsNameFieldDisabled] = useState(true);
+  const [isPriceFieldDisabled, setIsPriceFieldDisabled] = useState(true);
+  const [isDescFieldDisabled, setIsDescFieldDisabled] = useState(true);
 
   const [tempItem, setTempItem] = useState({
     name: "",
@@ -51,7 +53,11 @@ const Edit = () => {
   const handleTextFieldChange = (event) => {
     if (event.key === "Enter" || event.key === "Tab") {
       //TODO add option to edit image too
-      console.log(tempItem);
+      switch(event.target.placeholder) {
+        case 'Placeholder name': setIsNameFieldDisabled(!isNameFieldDisabled); break;
+        case 'Placeholder price': setIsPriceFieldDisabled(!isPriceFieldDisabled); break;
+        case 'Placeholder desc': setIsDescFieldDisabled(!isDescFieldDisabled); break;
+      }
     }
   };
 
@@ -87,7 +93,7 @@ const Edit = () => {
         <div className={styles.itemDiv}>
           <input
             type="text"
-            disabled={isDisabled}
+            disabled={isNameFieldDisabled}
             placeholder={"Placeholder name"}
             className={styles.textField}
             // onChange={(e) => {
@@ -102,11 +108,11 @@ const Edit = () => {
               })
             }}
             value={tempItem.name}
-            // onKeyPress={handleTextFieldChange}
+            onKeyPress={handleTextFieldChange}
           />
           <button
             className={styles.editBtn}
-            onClick={() => setDisabled(!isDisabled)}
+            onClick={() => setIsNameFieldDisabled(!isNameFieldDisabled)}
           >
             <i className="far fa-edit"></i>
           </button>
@@ -115,7 +121,7 @@ const Edit = () => {
         <div className={styles.itemDiv}>
           <input
             type="text"
-            disabled={isDisabled}
+            disabled={isPriceFieldDisabled}
             placeholder={"Placeholder price"}
             className={styles.textField}
             // onChange={(e) => {
@@ -130,11 +136,11 @@ const Edit = () => {
               })
             }}
             value={tempItem.price}
-            // onKeyPress={handleTextFieldChange}
+            onKeyPress={handleTextFieldChange}
           />
           <button
             className={styles.editBtn}
-            onClick={() => setDisabled(!isDisabled)}
+            onClick={() => setIsPriceFieldDisabled(!isPriceFieldDisabled)}
           >
             <i className="far fa-edit"></i>
           </button>
@@ -143,7 +149,7 @@ const Edit = () => {
         <div className={styles.itemDiv}>
           <input
             type="text"
-            disabled={isDisabled}
+            disabled={isDescFieldDisabled}
             placeholder={"Placeholder desc"}
             className={styles.textField}
             // onChange={(e) => {
@@ -158,11 +164,11 @@ const Edit = () => {
               })
             }}
             value={tempItem.description}
-            // onKeyPress={handleTextFieldChange}
+            onKeyPress={handleTextFieldChange}
           />
           <button
             className={styles.editBtn}
-            onClick={() => setDisabled(!isDisabled)}
+            onClick={() => setIsDescFieldDisabled(!isDescFieldDisabled)}
           >
             <i className="far fa-edit"></i>
           </button>
