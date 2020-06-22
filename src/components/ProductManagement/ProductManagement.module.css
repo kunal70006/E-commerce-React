@@ -1,6 +1,7 @@
 .ProductManagement {
   height: 100vh;
   letter-spacing: 1px;
+  overflow-x: hidden;
 }
 
 .title {
@@ -51,14 +52,63 @@
   width: 400px;
 }
 
+.item h3 {
+  color: #00344b;
+  margin-bottom: 0.25rem;
+}
+
 .item:hover {
   -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
 }
 
+.name {
+  text-transform: capitalize;
+  font-size: 30px;
+}
+
+.price {
+  font-size: 25px;
+}
+
+.desc {
+  font-size: 20px;
+  font-weight: 500;
+}
+
 .img {
   height: 200px;
   width: 200px;
+}
+
+.editBtn {
+  cursor: pointer;
+  font-size: 20px;
+  padding: 5px 10px;
+  margin-top: 0.5rem;
+  letter-spacing: 1.5px;
+  text-transform: capitalize;
+  color: #2b2b2b;
+  background: none;
+  border: 1.5px solid #5e6977;
+  border-radius: 4px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+
+.editBtn:hover {
+  border: 1.5px solid #2979ff;
+  color: #fafafa;
+  background: #2979ff;
+}
+
+.editBtn:active {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
+}
+
+.editBtn:focus {
+  outline: none;
 }
 
 @media only screen and (max-width: 992px) {

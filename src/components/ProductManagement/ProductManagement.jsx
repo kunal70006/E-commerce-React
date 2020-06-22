@@ -40,9 +40,9 @@ const ProductManagement = () => {
         {items.map((item) => {
           return (
             <div key={item.itemId} className={styles.item}>
-              <h3 className={styles.name}>name: {item.name} </h3>
-              <h3 className={styles.price}>price: {item.price} </h3>
-              <h3 className={styles.desc}>description: {item.description} </h3>
+              <h3 className={styles.name}>{item.name} </h3>
+              <h3 className={styles.price}>${item.price} </h3>
+              <h3 className={styles.desc}>{item.description} </h3>
               <img className={styles.img} src={item.imageUrl} alt={item.name} />
               <button
                 className={styles.editBtn}
