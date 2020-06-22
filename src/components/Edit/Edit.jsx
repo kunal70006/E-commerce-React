@@ -167,7 +167,7 @@ const Edit = () => {
             <i className="far fa-edit"></i>
           </button>
         </div>
-        <img src={require("./meme.jpg")} className={styles.img} alt="name" />
+        <img src={currentItem.imageUrl} className={styles.img} alt="name" />
 
         <button onClick={() => submitChanges()}>Submit Changes</button>
       </div>
