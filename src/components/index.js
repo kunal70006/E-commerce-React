@@ -7,5 +7,6 @@ export { default as Register } from "./Register/Register";
 export { default as Login } from "./Login/Login";
 export { default as Details } from "./Details/Details";
 export { default as UploadItem } from "./UploadItem/UploadItem";
-export { default as ProductManagement } from "./ProductManagement/ProductManagement"
-export { default as Edit } from './Edit/Edit'
+export { default as ProductManagement } from "./ProductManagement/ProductManagement";
+export { default as Edit } from "./Edit/Edit";
+export { default as Profile } from "./Profile/Profile";

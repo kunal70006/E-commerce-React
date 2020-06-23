@@ -63,7 +63,7 @@ const Navbar = () => {
             </li>
           </div>
           <div className={styles.temp2}>
-            <li className={styles.links}>{/*Here*/ userChecker()}</li>
+            <li className={styles.links}>{/*Here userChecker()*/}</li>
             <li className={styles.links}>
               <button
                 className={styles.navBtns}

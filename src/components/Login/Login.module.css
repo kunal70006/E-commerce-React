@@ -46,10 +46,8 @@
   margin-bottom: 10px;
   background: none;
   color: #2b2b2b;
-  border: 2px solid #2979ff;
-  border-radius: 5px;
-  -webkit-transition: 0.2s ease-in;
-  transition: 0.2s ease-in;
+  border: none;
+  border-bottom: 2px solid #5e6977;
 }
 
 .Login input[type="email"]::-webkit-input-placeholder,
@@ -79,6 +77,7 @@
 .Login input[type="email"]:focus,
 .Login input[type="password"]:focus {
   outline: none;
+  border-bottom: 2px solid #2979ff;
 }
 
 .loginButton {
@@ -87,7 +86,7 @@
   padding: 4px 8px;
   background: none;
   color: #2b2b2b;
-  border: 2px solid #2979ff;
+  border: 2px solid #5e6977;
   border-radius: 5px;
   margin-bottom: 10px;
   -webkit-transition: 0.2s ease-in;
@@ -95,6 +94,7 @@
 }
 
 .loginButton:hover {
+  border: 2px solid #2979ff;
   background-color: #2979ff;
   color: #fafafa;
 }
