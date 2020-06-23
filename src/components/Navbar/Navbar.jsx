@@ -1,46 +1,44 @@
 import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
+import firebase from "../../Firebase";
+
 import styles from "./Navbar.module.css";
 
 const Navbar = () => {
   const history = useHistory();
   const [toggle, setToggle] = useState(false);
-  /*return (
-    <div className={styles.parent}>
-      <nav className={styles.Navbar}>
-        <div className={styles.links}>
-          <img src="./icon.ico" alt="logo" className={styles.logo} />
-          <div className={styles.title} onClick={() => history.push("/")}>
-            Antique Coins
-          </div>
-          <div
-            className={styles.nav_links}
-            onClick={() => history.push("/shop")}
-          >
-            Shop
-          </div>
-          <div
-            className={styles.nav_links}
-            onClick={() => history.push("/about")}
-          >
-            About
-          </div>
-        </div>
-        <div className={styles.cartBtn} onClick={() => history.push("/cart")}>
-          Cart
-        </div>
-        <div className={styles.loginBtn} onClick={() => history.push("/login")}>
-          Login
-        </div>
-      </nav>
-    </div>
-  );
 
-  const handleToggle = (event) => {
-    //event.preventDefault();
-    toggle = true;
-    console.log(toggle);
-  };*/
+  // Why it no work
+  const userChecker = () => {
+    firebase.auth().onAuthStateChanged((user) => {
+      console.log(user);
+      if (user) {
+        console.log("inside if");
+        return (
+          <button
+            className={styles.navBtns}
+            onClick={() => {
+              firebase.auth().signOut();
+              history.push("/");
+              alert("You logged out");
+            }}
+          >
+            Logout
+          </button>
+        );
+      } else {
+        console.log("inside else");
+        return (
+          <button
+            className={styles.navBtns}
+            onClick={() => history.push("/login")}
+          >
+            Login
+          </button>
+        );
+      }
+    });
+  };
 
   return (
     <div className={styles.navbar}>
@@ -65,14 +63,7 @@ const Navbar = () => {
             </li>
           </div>
           <div className={styles.temp2}>
-            <li className={styles.links}>
-              <button
-                className={styles.navBtns}
-                onClick={() => history.push("/login")}
-              >
-                Login
-              </button>
-            </li>
+            <li className={styles.links}>{/*Here*/ userChecker()}</li>
             <li className={styles.links}>
               <button
                 className={styles.navBtns}

@@ -18,7 +18,7 @@ const Login = () => {
       .then((user) => {
         localStorage.setItem("email", user.user.email);
         localStorage.setItem("uid", user.user.uid);
-        history.push("/");
+        history.push("/profile");
       })
       .catch((error) => {
         alert(error.code, error.message);

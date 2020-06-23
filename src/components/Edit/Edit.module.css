@@ -105,6 +105,34 @@
   height: 300px;
   width: 300px;
   margin: 1rem auto;
+  border: 1px solid #5e6977;
+}
+
+.submitChanges {
+  cursor: pointer;
+  font-size: 15px;
+  margin: 10px;
+  padding: 2px 8px;
+  background: none;
+  border: 1px solid #5e6977;
+  border-radius: 3px;
+  -webkit-transition: 0.2s ease;
+  transition: 0.2s ease;
+}
+
+.submitChanges:hover {
+  border: 1px solid #448aff;
+  background: #448aff;
+  color: white;
+}
+
+.submitChanges:focus {
+  outline: none;
+}
+
+.submitChanges:active {
+  -webkit-transform: translateY(-2px);
+          transform: translateY(-2px);
 }
 
 @media only screen and (max-width: 768px) {

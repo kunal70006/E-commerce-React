@@ -7,7 +7,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import styles from "./Edit.module.css";
 
 const Edit = () => {
-  const history = useHistory()
+  const history = useHistory();
   const location = useLocation();
 
   const [currentItem, setCurrentItem] = useState({
@@ -36,27 +36,33 @@ const Edit = () => {
       .get()
       .then((snapshot) => {
         setCurrentItem(snapshot.data());
-        setTempItem(snapshot.data())
-      })
-  }
+        setTempItem(snapshot.data());
+      });
+  };
 
   useEffect(() => {
     if (typeof location.itemId === "undefined") {
       let id = sessionStorage.getItem("haxx");
-      getItemDetails(id)
+      getItemDetails(id);
     } else {
       sessionStorage.setItem("haxx", location.itemId);
-      getItemDetails(location.itemId)
+      getItemDetails(location.itemId);
     }
   }, []);
 
   const handleTextFieldChange = (event) => {
     if (event.key === "Enter" || event.key === "Tab") {
       //TODO add option to edit image too
-      switch(event.target.placeholder) {
-        case 'Placeholder name': setIsNameFieldDisabled(!isNameFieldDisabled); break;
-        case 'Placeholder price': setIsPriceFieldDisabled(!isPriceFieldDisabled); break;
-        case 'Placeholder desc': setIsDescFieldDisabled(!isDescFieldDisabled); break;
+      switch (event.target.placeholder) {
+        case "Placeholder name":
+          setIsNameFieldDisabled(!isNameFieldDisabled);
+          break;
+        case "Placeholder price":
+          setIsPriceFieldDisabled(!isPriceFieldDisabled);
+          break;
+        case "Placeholder desc":
+          setIsDescFieldDisabled(!isDescFieldDisabled);
+          break;
       }
     }
   };
@@ -64,26 +70,16 @@ const Edit = () => {
   const submitChanges = () => {
     firebase
       .firestore()
-      .collection('items')
+      .collection("items")
       .doc(sessionStorage.getItem("haxx"))
       .update(tempItem)
-      .then( () => {
-        console.log("done")
-        alert("Changes have been submitted")
-        history.push("/promgmnt")
-      })
-  }
+      .then(() => {
+        console.log("done");
+        alert("Changes have been submitted");
+        history.push("/promgmnt");
+      });
+  };
 
-  {
-    /*return (
-    <div className={styles.Edit}>
-      <h3> {currentItem.name} </h3>
-      <h3> {currentItem.price} </h3>
-      <h3> {currentItem.description} </h3>
-      <img src={currentItem.imageUrl} alt={currentItem.name} />
-  </div>);*/
-  }
-  
   return (
     <div className={styles.Edit}>
       <Navbar />
@@ -96,16 +92,13 @@ const Edit = () => {
             disabled={isNameFieldDisabled}
             placeholder={"Placeholder name"}
             className={styles.textField}
-            // onChange={(e) => {
-            //   setTempItems({ name: e.target.value });
-            // }}
-            onChange={ (event) => {
+            onChange={(event) => {
               setTempItem({
                 name: event.target.value,
                 price: tempItem.price,
                 description: tempItem.description,
                 imageUrl: tempItem.imageUrl,
-              })
+              });
             }}
             value={tempItem.name}
             onKeyPress={handleTextFieldChange}
@@ -124,16 +117,13 @@ const Edit = () => {
             disabled={isPriceFieldDisabled}
             placeholder={"Placeholder price"}
             className={styles.textField}
-            // onChange={(e) => {
-            //   setTempItems({ price: e.target.value });
-            // }}
-            onChange={ (event) => {
+            onChange={(event) => {
               setTempItem({
                 name: tempItem.name,
                 price: event.target.value,
                 description: tempItem.description,
                 imageUrl: tempItem.imageUrl,
-              })
+              });
             }}
             value={tempItem.price}
             onKeyPress={handleTextFieldChange}
@@ -152,16 +142,13 @@ const Edit = () => {
             disabled={isDescFieldDisabled}
             placeholder={"Placeholder desc"}
             className={styles.textField}
-            // onChange={(e) => {
-            //   setTempItems({ description: e.target.value });
-            // }}
-            onChange={ (event) => {
+            onChange={(event) => {
               setTempItem({
                 name: tempItem.name,
                 price: tempItem.price,
                 description: event.target.value,
                 imageUrl: tempItem.imageUrl,
-              })
+              });
             }}
             value={tempItem.description}
             onKeyPress={handleTextFieldChange}
@@ -173,9 +160,14 @@ const Edit = () => {
             <i className="far fa-edit"></i>
           </button>
         </div>
-        <img src={currentItem.imageUrl} className={styles.img} alt="name" />
 
-        <button onClick={() => submitChanges()}>Submit Changes</button>
+        <img src={currentItem.imageUrl} className={styles.img} alt="name" />
+        <button
+          onClick={() => submitChanges()}
+          className={styles.submitChanges}
+        >
+          Submit Changes
+        </button>
       </div>
     </div>
   );
