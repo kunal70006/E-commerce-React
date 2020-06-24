@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import firebase from "firebase";
-// import { storage } from 'firebase'
+import firebase, { storage } from "../../Firebase";
 import Navbar from "../Navbar/Navbar";
 import { useHistory, useLocation } from "react-router-dom";
 
@@ -67,14 +66,35 @@ const Edit = () => {
     }
   };
 
+  const changeImage = (event) => {
+    if (event.target.files[0]) {
+      var date = new Date().toISOString()
+      const uploadTask = storage.ref(`images/${date}`)
+      uploadTask.put(event.target.files[0]).then( (snapshot) => {
+        uploadTask.getDownloadURL().then((url) => {
+          setTempItem( {
+            name: tempItem.name,
+            price: tempItem.price,
+            description: tempItem.description,
+            imageUrl: url,
+          })
+        })
+      })
+    }
+  }
+
   const submitChanges = () => {
+    storage.refFromURL(currentItem.imageUrl).delete().then( () => {
+    }).catch( (error) => {
+      alert(error.code, error.message)
+    })
+
     firebase
       .firestore()
       .collection("items")
       .doc(sessionStorage.getItem("haxx"))
       .update(tempItem)
       .then(() => {
-        console.log("done");
         alert("Changes have been submitted");
         history.push("/promgmnt");
       });
@@ -161,7 +181,13 @@ const Edit = () => {
           </button>
         </div>
 
-        <img src={currentItem.imageUrl} className={styles.img} alt="name" />
+        <img src={tempItem.imageUrl} className={styles.img} alt="name" />
+        <input 
+          type="file"
+          accept="image/*"
+          onChange={ (event) => changeImage(event)}
+        />
+
         <button
           onClick={() => submitChanges()}
           className={styles.submitChanges}
