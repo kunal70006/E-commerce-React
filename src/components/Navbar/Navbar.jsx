@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import firebase from "../../Firebase";
 
@@ -8,37 +8,54 @@ const Navbar = () => {
   const history = useHistory();
   const [toggle, setToggle] = useState(false);
 
+  const [userExists, setUserExists] = useState(false)
+
   // Why it no work
-  const userChecker = () => {
+  // const userChecker = () => {
+  //   firebase.auth().onAuthStateChanged((user) => {
+  //     console.log(user.email);
+  //     if (user) {
+  //       setCurrentUser(true)
+  //     } else {
+  //       setCurrentUser(false)
+  //     }
+  //     if (user) {
+  //       console.log("inside if");
+  //       return (
+  //         <button
+  //           className={styles.navBtns}
+  //           onClick={() => {
+  //             firebase.auth().signOut();
+  //             history.push("/");
+  //             alert("You logged out");
+  //           }}
+  //         >
+  //           Logout
+  //         </button>
+  //       );
+  //     } else {
+  //       console.log("inside else");
+  //       return (
+  //         <button
+  //           className={styles.navBtns}
+  //           onClick={() => history.push("/login")}
+  //         >
+  //           Login
+  //         </button>
+  //       );
+  //     }
+  //   });
+  // };
+
+  useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
-      console.log(user);
       if (user) {
-        console.log("inside if");
-        return (
-          <button
-            className={styles.navBtns}
-            onClick={() => {
-              firebase.auth().signOut();
-              history.push("/");
-              alert("You logged out");
-            }}
-          >
-            Logout
-          </button>
-        );
+        setUserExists(true)
       } else {
-        console.log("inside else");
-        return (
-          <button
-            className={styles.navBtns}
-            onClick={() => history.push("/login")}
-          >
-            Login
-          </button>
-        );
+        setUserExists(false)
       }
-    });
-  };
+    })
+  }, [])
 
   return (
     <div className={styles.navbar}>
@@ -63,7 +80,27 @@ const Navbar = () => {
             </li>
           </div>
           <div className={styles.temp2}>
-            <li className={styles.links}>{/*Here userChecker()*/}</li>
+            <li className={styles.links}>
+              {
+                userExists ? 
+                <button
+                  className={styles.navBtns}
+                  onClick={() => {
+                    firebase.auth().signOut();
+                    history.push("/");
+                    alert("You logged out");
+                  }}
+                >
+                  Logout
+                </button> : 
+                <button
+                  className={styles.navBtns}
+                  onClick={() => history.push("/login")}
+                >
+                  Login
+                </button>
+              }
+            </li>
             <li className={styles.links}>
               <button
                 className={styles.navBtns}
