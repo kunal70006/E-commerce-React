@@ -23,7 +23,8 @@ const UploadItem = () => {
 
   const submitForm = (event) => {
     event.preventDefault();
-    const uploadTask = storage.ref(`images/${image.name}`).put(image);
+    var date = new Date().toISOString()
+    const uploadTask = storage.ref(`images/${date}`).put(image);
     uploadTask.on(
       "state_changed",
       (snapshot) => {
@@ -37,7 +38,7 @@ const UploadItem = () => {
         //completion function
         storage
           .ref("images")
-          .child(image.name)
+          .child(date)
           .getDownloadURL()
           .then((url) => {
             const itemObj = {
@@ -49,11 +50,11 @@ const UploadItem = () => {
             };
 
             firebase.firestore().collection("items").add(itemObj);
+          }).then( () => {
+            history.push("/promgmnt");
           });
       }
     );
-
-    history.push("/promgmnt");
   };
 
   return (
