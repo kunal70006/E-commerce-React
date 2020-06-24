@@ -1,80 +1,57 @@
 nav {
   width: 100vw;
-  height: 8vh;
+  height: 65px;
   border-bottom: 2px solid #fafafa;
   -webkit-box-shadow: 0px 4px 6px 3px rgba(0, 0, 0, 0.25);
           box-shadow: 0px 4px 6px 3px rgba(0, 0, 0, 0.25);
   font-size: 20px;
   letter-spacing: 1.5px;
-  background-color: white;
+  background-color: #fafafa;
 }
 
-.navLinks {
+.nav {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-align: center;
-      -ms-flex-align: center;
-          align-items: center;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
-  margin: 0 0.5rem 0 1rem;
-}
-
-.temp1 {
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  width: 70%;
-}
-
-.header {
   list-style: none;
+}
+
+li:nth-child(-n + 3) {
+  margin-right: 30px;
+}
+
+li:nth-child(4) {
+  margin-left: auto;
+}
+
+.navLinks h2 {
+  margin-top: 1rem;
+  color: #00344b;
   cursor: pointer;
 }
 
-.logo {
-  height: 2.5rem;
-  width: 2.5rem;
-  margin-top: 0.24rem;
-}
-
-.title {
-  font-family: "Sriracha", cursive;
-  font-size: 30px;
-  color: #00344b;
-}
-
-.links {
-  cursor: pointer;
-  list-style: none;
-  margin: 1rem 2rem 0 2rem;
-  color: #00344b;
-}
-
-.links h2 {
-  font-family: "Lato", sans-serif;
-}
-
-.links:hover {
+.navLinks h2:hover {
   text-decoration: underline;
 }
 
-.temp2 {
+.header {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 30%;
-  -webkit-box-pack: end;
-      -ms-flex-pack: end;
-          justify-content: flex-end;
+}
+
+.logo {
+  height: 50px;
+  width: 50px;
+  margin-left: 1rem;
 }
 
 .navBtns {
   cursor: pointer;
+  margin-top: 1.2rem;
+  margin-right: 2rem;
   font-family: "Lato", sans-serif;
-  font-size: 25px;
+  font-size: 20px;
   padding: 2px 10px;
   background: none;
   border: 1.5px solid #5e6977;
@@ -89,47 +66,111 @@ nav {
   color: #fafafa;
 }
 
-.active nav {
-  height: 100vh;
+.navBtns:focus {
+  outline: none;
 }
 
-.burger {
+.hamBurger {
   display: none;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-      -ms-flex-direction: column;
-          flex-direction: column;
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-top: -35px;
-  margin-left: 5px;
+  cursor: pointer;
+  background: none;
+  border: none;
 }
 
-.line {
-  cursor: pointer;
+.hamBurger:focus {
+  outline: none;
+}
+
+.lines {
   width: 35px;
   height: 3px;
-  background: #00344b;
+  background-color: #2b2b2b;
   margin: 3px;
 }
 
 @media only screen and (max-width: 768px) {
-  .burger {
+  .hamBurger {
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
-    cursor: pointer;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    margin-top: 1rem;
+    margin-left: 1rem;
   }
-  .temp1 {
-    width: 100%;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
-  }
-  .temp2,
-  .links {
+  li:nth-child(n + 2) {
     display: none;
+  }
+  nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .nav {
+    margin: 1rem auto;
+  }
+  /*Hamburger menu styling starts*/
+  .burgerNav {
+    top: 0;
+    left: 0;
+    height: 100vh;
+    width: 50vw;
+    position: absolute;
+    -webkit-box-shadow: 0px 4px 6px 3px rgba(0, 0, 0, 0.25);
+            box-shadow: 0px 4px 6px 3px rgba(0, 0, 0, 0.25);
+    background-color: #fafafa;
+    letter-spacing: 1px;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-pack: space-evenly;
+        -ms-flex-pack: space-evenly;
+            justify-content: space-evenly;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  .hamhamBurger {
+    cursor: pointer;
+    background: none;
+    border: none;
+  }
+  .hamhamBurger:focus {
+    outline: none;
+  }
+  .burgerNavLinks {
+    cursor: pointer;
+    width: 100%;
+    margin: 2rem auto;
+  }
+  .burgerNavLinks h2 {
+    text-align: center;
+  }
+  .burgerNavLinks h2:hover {
+    text-decoration: underline;
+  }
+  .burgerNavLinks button {
+    width: 100px;
+    margin: 0 auto;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: column;
+            flex-direction: column;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
   }
 }
 /*# sourceMappingURL=Navbar.module.css.map */
