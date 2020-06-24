@@ -70,7 +70,7 @@ const Edit = () => {
     if (event.target.files[0]) {
       var date = new Date().toISOString()
       const uploadTask = storage.ref(`images/${date}`)
-      uploadTask.put(event.target.files[0]).then( (snapshot) => {
+      uploadTask.put(event.target.files[0]).then( () => {
         uploadTask.getDownloadURL().then((url) => {
           setTempItem( {
             name: tempItem.name,
