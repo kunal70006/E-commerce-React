@@ -11,6 +11,8 @@
   border-radius: 5px;
   box-shadow: 0px 0px 8px 10px rgba(0, 0, 0, 0.5);
 
+  position: absolute;
+
   h4 {
     justify-content: center;
     margin-top: -15px;
@@ -21,7 +23,8 @@
 }
 
 .heroImg {
-  background-image: url("../LandingPage/hero.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("../LandingPage/hero.jpg");
 
   height: 100%;
   width: 100%;

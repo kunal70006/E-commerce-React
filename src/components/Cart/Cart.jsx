@@ -49,46 +49,29 @@ const Payment = ({ checkoutPrice }) => {
 const Cart = () => {
   const history = useHistory();
   const [cartItems, setCartItems] = useState([]);
+
+  const [btnDisp, setBtnDisp] = useState({
+    display: "none",
+  });
+
+  const [editBtn, setEditBtn] = useState({
+    display: "inline-block",
+  });
+
   let total = 0;
 
   useEffect(() => {
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {
-        // Old Static Code
-        
-        // firebase
-        //   .firestore()
-        //   .collection("users")
-        //   .doc(user.email)
-        //   .collection("cart")
-        //   .get()
-        //   .then((docs) => {
-        //     let tempItems = [];
-        //     docs.forEach((doc) => {
-        //       const cartItemObj = {
-        //         name: doc.data().name,
-        //         price: doc.data().price,
-        //         quantity: doc.data().quantity,
-        //         image: doc.data().image,
-        //         itemId: doc.data().itemId,
-        //         sellerEmail: doc.data().sellerEmail,
-        //       };
-        //       tempItems.push(cartItemObj);
-        //     });
-        //   })
-        //   .then(() => {
-        //     setCartItems(tempItems);
-        //   });
-
         //New Listener Code, Real time as fuck
         firebase
           .firestore()
           .collection("users")
           .doc(user.email)
           .collection("cart")
-          .onSnapshot( (snapshot) => {
-            setCartItems([])
-            snapshot.forEach( (doc) => {
+          .onSnapshot((snapshot) => {
+            setCartItems([]);
+            snapshot.forEach((doc) => {
               const cartItemObj = {
                 name: doc.data().name,
                 price: doc.data().price,
@@ -97,9 +80,9 @@ const Cart = () => {
                 itemId: doc.data().itemId,
                 sellerEmail: doc.data().sellerEmail,
               };
-              setCartItems( (cartItems) => [...cartItems, cartItemObj])
-            })
-          })
+              setCartItems((cartItems) => [...cartItems, cartItemObj]);
+            });
+          });
       } else {
         alert("You have to log in to see this page");
         history.push("/login");
@@ -140,17 +123,19 @@ const Cart = () => {
   const removeItem = (event, item) => {
     firebase
       .firestore()
-      .collection('users')
-      .doc(localStorage.getItem('email'))
-      .collection('cart')
+      .collection("users")
+      .doc(localStorage.getItem("email"))
+      .collection("cart")
       .where("itemId", "==", item.itemId)
-      .get().then( (snapshot) => {
-        snapshot.forEach( (doc) => {
+      .get()
+      .then((snapshot) => {
+        snapshot.forEach((doc) => {
           doc.ref.delete();
-        })
-      }).then( () => {
-        console.log("Done")
+        });
       })
+      .then(() => {
+        console.log("Done");
+      });
   };
 
   return (
@@ -159,65 +144,86 @@ const Cart = () => {
       <div className={styles.itemContainer}>
         <h1 className={styles.title}>shopping bag</h1>
         <div className={styles.container}>
-          {cartItems.map((item, index) => {
-            {
-              total += Number(item.price * item.quantity);
-            }
-            return (
-              <div className={styles.item} key={index}>
-                <img className={styles.img} alt="item" src={item.image} />
-                <h3 className={styles.name}>{item.name}</h3>
-                <h3 className={styles.sellerEmail}>{item.sellerEmail}</h3>
-                <h3 className={styles.qty}>
-                  <span>
-                    <button
-                      className={styles.qtyBtns}
-                      // onClick={() => item.quantity++}
-                      onClick={() => {
-                        let newItems = [...cartItems];
-                        item.quantity = Number(item.quantity) + 1;
-                        newItems[index] = item;
-                        setCartItems(newItems);
-                      }}
-                    >
-                      +
-                    </button>
-                    {item.quantity}
-                    <button
-                      className={styles.qtyBtns}
-                      onClick={() => {
-                        if (Number(item.quantity) > 1) {
+          {cartItems.length !== 0 ? (
+            cartItems.map((item, index) => {
+              {
+                total += Number(item.price * item.quantity);
+              }
+              return (
+                <div className={styles.item} key={index}>
+                  <img className={styles.img} alt="item" src={item.image} />
+                  <h3 className={styles.name}>{item.name}</h3>
+                  <h3 className={styles.sellerEmail}>{item.sellerEmail}</h3>
+                  <h3 className={styles.qty}>
+                    <span>
+                      <button
+                        className={styles.qtyBtns}
+                        // onClick={() => item.quantity++}
+                        style={btnDisp}
+                        onClick={() => {
                           let newItems = [...cartItems];
-                          item.quantity--;
+                          item.quantity = Number(item.quantity) + 1;
                           newItems[index] = item;
                           setCartItems(newItems);
-                        }
-                      }}
-                    >
-                      -
-                    </button>
-                    <button
-                      className={styles.confirmBtn}
-                      onClick={(event) => handleQtyChange(event, item)}
-                    >
-                      Confirm Changes?
-                    </button>
-                  </span>
-                </h3>
-                <h3 className={styles.total}>
-                  $
-                  {`
+                        }}
+                      >
+                        +
+                      </button>
+                      {item.quantity}
+                      <button
+                        className={styles.qtyBtns}
+                        onClick={() => {
+                          setBtnDisp(editBtn);
+                          setEditBtn(btnDisp);
+                        }}
+                        style={editBtn}
+                      >
+                        Edit
+                      </button>
+                      <button
+                        className={styles.qtyBtns}
+                        style={btnDisp}
+                        onClick={() => {
+                          if (Number(item.quantity) > 1) {
+                            let newItems = [...cartItems];
+                            item.quantity--;
+                            newItems[index] = item;
+                            setCartItems(newItems);
+                          }
+                        }}
+                      >
+                        -
+                      </button>
+                      <button
+                        className={styles.confirmBtn}
+                        style={btnDisp}
+                        onClick={(event) => {
+                          handleQtyChange(event, item);
+                          setEditBtn(btnDisp);
+                          setBtnDisp(editBtn);
+                        }}
+                      >
+                        Confirm Changes?
+                      </button>
+                    </span>
+                  </h3>
+                  <h3 className={styles.total}>
+                    $
+                    {`
                   ${Number(item.price) * Number(item.quantity)}`}
-                </h3>
-                <div
-                  className={styles.removeItm}
-                  onClick={(event) => removeItem(event, item)}
-                >
-                  X
+                  </h3>
+                  <div
+                    className={styles.removeItm}
+                    onClick={(event) => removeItem(event, item)}
+                  >
+                    X
+                  </div>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })
+          ) : (
+            <h1 className={styles.emptyCart}>Emtpy cart</h1>
+          )}
           <p className={styles.finalPrice}>Total: ${total}</p>
           <div className={styles.paymentBtn}>
             <Payment checkoutPrice={total} />
