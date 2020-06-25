@@ -39,7 +39,7 @@
   margin: 0.5rem 1rem 1rem 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid #5e6977;
-  justify-content: space-between;
+  justify-content: space-around;
   align-items: center;
 
   h3 {
@@ -109,6 +109,12 @@
 .removeItm {
   font-size: 12px;
   margin: 5px;
+}
+
+.emptyCart {
+  margin: 3rem auto;
+  color: rgb(43, 43, 43);
+  font-size: 40px;
 }
 
 .finalPrice {

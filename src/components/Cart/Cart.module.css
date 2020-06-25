@@ -53,9 +53,8 @@
   margin: 0.5rem 1rem 1rem 1rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid #5e6977;
-  -webkit-box-pack: justify;
-      -ms-flex-pack: justify;
-          justify-content: space-between;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -133,6 +132,12 @@
 .removeItm {
   font-size: 12px;
   margin: 5px;
+}
+
+.emptyCart {
+  margin: 3rem auto;
+  color: #2b2b2b;
+  font-size: 40px;
 }
 
 .finalPrice {
