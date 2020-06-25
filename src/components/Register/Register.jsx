@@ -17,9 +17,11 @@ const Register = (props) => {
       .auth()
       .createUserWithEmailAndPassword(email, password)
       .then((user) => {
-        localStorage.setItem("email", user.user.email);
-        localStorage.setItem("uid", user.user.uid);
-        history.push("/");
+        if (user) {
+          localStorage.setItem("email", user.user.email);
+          localStorage.setItem("uid", user.user.uid);
+          history.push("/");
+        }
       })
       .catch((error) => {
         alert(error.code, error.message);

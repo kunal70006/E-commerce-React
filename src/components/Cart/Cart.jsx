@@ -49,6 +49,7 @@ const Payment = ({ checkoutPrice }) => {
 const Cart = () => {
   const history = useHistory();
   const [cartItems, setCartItems] = useState([]);
+  const [isEmpty, setIsEmpty] = useState(true)
 
   const [btnDisp, setBtnDisp] = useState({
     display: "none",
@@ -70,6 +71,9 @@ const Cart = () => {
           .doc(user.email)
           .collection("cart")
           .onSnapshot((snapshot) => {
+            if (isEmpty === true && snapshot.docs.length > 0) {
+              setIsEmpty(false)
+            }
             setCartItems([]);
             snapshot.forEach((doc) => {
               const cartItemObj = {
@@ -143,7 +147,7 @@ const Cart = () => {
       <div className={styles.itemContainer}>
         <h1 className={styles.title}>shopping bag</h1>
         <div className={styles.container}>
-          {cartItems.length !== 0 ? (
+          {!isEmpty ? (
             cartItems.map((item, index) => {
               {
                 total += Number(item.price * item.quantity);
@@ -157,7 +161,6 @@ const Cart = () => {
                     <span>
                       <button
                         className={styles.qtyBtns}
-                        // onClick={() => item.quantity++}
                         style={btnDisp}
                         onClick={() => {
                           let newItems = [...cartItems];
