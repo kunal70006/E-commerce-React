@@ -20,6 +20,8 @@ const Edit = () => {
   const [isPriceFieldDisabled, setIsPriceFieldDisabled] = useState(true);
   const [isDescFieldDisabled, setIsDescFieldDisabled] = useState(true);
 
+  const [newImage, setNewImage] = useState({})
+
   const [tempItem, setTempItem] = useState({
     name: "",
     price: "",
@@ -68,36 +70,45 @@ const Edit = () => {
 
   const changeImage = (event) => {
     if (event.target.files[0]) {
-      var date = new Date().toISOString()
-      const uploadTask = storage.ref(`images/${date}`)
-      uploadTask.put(event.target.files[0]).then( () => {
-        uploadTask.getDownloadURL().then((url) => {
-          setTempItem( {
-            name: tempItem.name,
-            price: tempItem.price,
-            description: tempItem.description,
-            imageUrl: url,
-          })
-        })
-      })
+      setNewImage(event.target.files[0])
     }
   }
 
   const submitChanges = () => {
-    storage.refFromURL(currentItem.imageUrl).delete().then( () => {
-    }).catch( (error) => {
-      alert(error.code, error.message)
-    })
+    var date = new Date().toISOString()
+    const uploadTask = storage.ref(`images/${date}`).put(newImage)
+    uploadTask.on("state_changed", 
+      (snapshot) => {
+        //progress function
+      }, 
+      (error) => {
+        //error handler
+        alert(error.code, error.message)
+      },
+      () => {
+        //completion function
+        storage.ref('images').child(date).getDownloadURL().then( (url) => {
+          console.log("URL=", url)
+          setTempItem({
+            name: tempItem.name,
+            price: tempItem.price,
+            description: tempItem.description,
+            imageUrl: url
+          })
 
-    firebase
-      .firestore()
-      .collection("items")
-      .doc(sessionStorage.getItem("haxx"))
-      .update(tempItem)
-      .then(() => {
-        alert("Changes have been submitted");
-        history.push("/promgmnt");
-      });
+          const itemObj = {
+            name: tempItem.name, 
+            price: tempItem.price,
+            description: tempItem.description,
+            imageUrl: url
+          }
+          firebase.firestore().collection("items").doc(sessionStorage.getItem("haxx")).update(itemObj)
+          storage.refFromURL(currentItem.imageUrl).delete().then( () => {
+            console.log("File on link ", currentItem.imageUrl, " has been deleted")
+          })
+        })
+      }
+    )
   };
 
   return (
