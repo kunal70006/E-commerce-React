@@ -99,24 +99,23 @@ const Cart = () => {
       .where("itemId", "==", item.itemId)
       .get()
       .then((snapshot) => {
-        const itemObj = {
-          name: snapshot.docs[0].data().name,
-          image: snapshot.docs[0].data().image,
-          itemId: snapshot.docs[0].data().itemId,
-          price: snapshot.docs[0].data().price,
-          sellerEmail: snapshot.docs[0].data().sellerEmail,
-          quantity: Number(item.quantity),
-        };
-        firebase
-          .firestore()
-          .collection("users")
-          .doc(localStorage.getItem("email"))
-          .collection("cart")
-          .doc(snapshot.docs[0].id)
-          .update(itemObj)
-          .then(() => {
-            console.log("done");
-          });
+        if (Number(item.quantity) !== snapshot.docs[0].data().quantity) {
+          const itemObj = {
+            name: snapshot.docs[0].data().name,
+            image: snapshot.docs[0].data().image,
+            itemId: snapshot.docs[0].data().itemId,
+            price: snapshot.docs[0].data().price,
+            sellerEmail: snapshot.docs[0].data().sellerEmail,
+            quantity: Number(item.quantity),
+          };
+          firebase
+            .firestore()
+            .collection("users")
+            .doc(localStorage.getItem("email"))
+            .collection("cart")
+            .doc(snapshot.docs[0].id)
+            .update(itemObj)
+        } 
       });
   };
 
@@ -222,7 +221,7 @@ const Cart = () => {
               );
             })
           ) : (
-            <h1 className={styles.emptyCart}>Emtpy cart</h1>
+            <h1 className={styles.emptyCart}>Empty cart</h1>
           )}
           <p className={styles.finalPrice}>Total: ${total}</p>
           <div className={styles.paymentBtn}>
