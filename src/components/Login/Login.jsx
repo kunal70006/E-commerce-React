@@ -30,7 +30,7 @@ const Login = () => {
       <div className={styles.heroImg}>
         <Navbar />
         <div className={styles.loginContainer}>
-          <h4>Login</h4>
+          <h4 className={styles.heading}>Login</h4>
           <input
             type="email"
             placeholder="Enter your email"

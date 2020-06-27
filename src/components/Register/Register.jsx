@@ -33,7 +33,7 @@ const Register = (props) => {
       <div className={styles.heroImg}>
         <Navbar />
         <div className={styles.registerContainer}>
-          <h4>Register</h4>
+          <h4 className={styles.heading}>Register</h4>
           <input
             type="email"
             placeholder="Enter your email"
@@ -54,6 +54,7 @@ const Register = (props) => {
             type="password"
             placeholder="Confirm your password"
             value={confirmPassword}
+            className={styles.confirmPassword}
             onChange={(event) => {
               setConfirmPassword(event.target.value);
             }}

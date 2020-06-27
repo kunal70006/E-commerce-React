@@ -49,6 +49,8 @@
 .cardContainer:hover {
   -webkit-box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
           box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+  -webkit-transform: translateY(-10px);
+          transform: translateY(-10px);
 }
 
 .card {

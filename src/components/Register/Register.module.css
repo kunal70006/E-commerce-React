@@ -1,87 +1,4 @@
-.registerContainer {
-  position: absolute;
-  width: 400px;
-  padding: 40px;
-  top: 50%;
-  left: 50%;
-  -webkit-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-  text-align: center;
-  background: white;
-  border-radius: 5px;
-  -webkit-box-shadow: 0px 0px 8px 10px rgba(0, 0, 0, 0.5);
-          box-shadow: 0px 0px 8px 10px rgba(0, 0, 0, 0.5);
-}
-
-.registerContainer h4 {
-  -webkit-box-pack: center;
-      -ms-flex-pack: center;
-          justify-content: center;
-  margin-top: -15px;
-  font-size: 35px;
-  margin-bottom: 10px;
-  color: #2b2b2b;
-}
-
-.heroImg {
-  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url("../LandingPage/hero.jpg");
-  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../LandingPage/hero.jpg");
-  height: 100%;
-  width: 100%;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: absolute;
-}
-
 .Register {
-  height: 100vh;
-  letter-spacing: 1px;
-}
-
-.Register input[type="email"],
-.Register input[type="password"] {
-  letter-spacing: 1px;
-  font-size: 25px;
-  padding: 4px 8px;
-  margin-bottom: 10px;
-  background: none;
-  color: #2b2b2b;
-  border: none;
-  border-bottom: 2px solid #5e6977;
-}
-
-.Register input[type="email"]::-webkit-input-placeholder,
-.Register input[type="password"]::-webkit-input-placeholder {
-  color: #2b2b2b;
-  font-size: 20px;
-}
-
-.Register input[type="email"]:-ms-input-placeholder,
-.Register input[type="password"]:-ms-input-placeholder {
-  color: #2b2b2b;
-  font-size: 20px;
-}
-
-.Register input[type="email"]::-ms-input-placeholder,
-.Register input[type="password"]::-ms-input-placeholder {
-  color: #2b2b2b;
-  font-size: 20px;
-}
-
-.Register input[type="email"]::placeholder,
-.Register input[type="password"]::placeholder {
-  color: #2b2b2b;
-  font-size: 20px;
-}
-
-.Register input[type="email"]:focus,
-.Register input[type="password"]:focus {
-  border-bottom: 2px solid #2979ff;
-  outline: none;
-}
-
-.passwordChecker {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -89,25 +6,117 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
-  padding-bottom: 5px;
-  font-weight: 600;
+  letter-spacing: 1px;
+  overflow: hidden;
+}
+
+.heroImg {
+  background-image: -webkit-gradient(linear, left top, left bottom, from(rgba(0, 0, 0, 0.5)), to(rgba(0, 0, 0, 0.5))), url("../LandingPage/hero.jpg");
+  background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url("../LandingPage/hero.jpg");
+  height: 100vh;
+  width: 100vw;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  position: static;
+}
+
+.registerContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  margin: 18rem auto;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  background-color: white;
+  color: #2b2b2b;
+  height: 400px;
+  width: 400px;
+  padding: 30px 0;
+  border-radius: 5px;
+  -webkit-box-shadow: 0px 0px 4px 15px rgba(0, 0, 0, 0.1);
+          box-shadow: 0px 0px 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.registerContainer input[type="email"],
+.registerContainer input[type="password"] {
+  border: none;
+  border-bottom: 2px solid #5e6977;
+  margin-bottom: 0.75rem;
+  font-size: 20px;
+}
+
+.registerContainer input[type="email"]::-webkit-input-placeholder,
+.registerContainer input[type="password"]::-webkit-input-placeholder {
+  font-size: 15px;
+  letter-spacing: 1px;
+  background-color: white;
+}
+
+.registerContainer input[type="email"]:-ms-input-placeholder,
+.registerContainer input[type="password"]:-ms-input-placeholder {
+  font-size: 15px;
+  letter-spacing: 1px;
+  background-color: white;
+}
+
+.registerContainer input[type="email"]::-ms-input-placeholder,
+.registerContainer input[type="password"]::-ms-input-placeholder {
+  font-size: 15px;
+  letter-spacing: 1px;
+  background-color: white;
+}
+
+.registerContainer input[type="email"]::placeholder,
+.registerContainer input[type="password"]::placeholder {
+  font-size: 15px;
+  letter-spacing: 1px;
+  background-color: white;
+}
+
+.registerContainer input[type="email"]:focus, .registerContainer input[type="email"]:active,
+.registerContainer input[type="password"]:focus,
+.registerContainer input[type="password"]:active {
+  border-bottom: 2px solid #2979ff;
+  outline: none;
+}
+
+.heading {
+  font-size: 35px;
+  margin-bottom: 1rem;
+}
+
+.passwordChecker {
+  font-weight: 500;
+  font-size: 12px;
+  margin: -5px auto 10px auto;
 }
 
 .registerButton {
   cursor: pointer;
-  font-size: 20px;
+  font-size: 18px;
   padding: 4px 8px;
   background: none;
   color: #2b2b2b;
-  border: 2px solid #5e6977;
+  border: 1.5px solid #5e6977;
   border-radius: 5px;
-  margin-bottom: 10px;
+  margin: -1rem auto 0.75rem auto;
   -webkit-transition: 0.2s ease-in;
   transition: 0.2s ease-in;
 }
 
 .registerButton:hover {
-  border: 2px solid #2979ff;
+  border: 1.5px solid #2979ff;
   background-color: #2979ff;
   color: #fafafa;
 }
@@ -133,12 +142,19 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .registerContainer {
-    width: 100%;
+  .Register {
+    overflow: visible;
   }
-  .Register input[type="email"],
-  .Register input[type="password"] {
-    font-size: 20px;
+  .heroImg {
+    position: fixed;
+  }
+  .registerContainer {
+    margin: 10rem auto;
+    height: auto;
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    padding: 30px;
   }
 }
 /*# sourceMappingURL=Register.module.css.map */
