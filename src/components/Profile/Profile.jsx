@@ -23,6 +23,9 @@ const Profile = () => {
             email: user.email,
             uid: user.uid,
           });
+        } else {
+          alert("You need to log in to see your profile")
+          history.push("/login")
         }
       });
     };
