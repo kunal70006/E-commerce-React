@@ -73,7 +73,7 @@ const Register = (props) => {
 
           <div className={styles.loginHref}>
             Already have an account?
-            <a href="/login">Log in</a>
+            <a onClick={() => history.push("/login")}>Log in</a>
           </div>
         </div>
       </div>
