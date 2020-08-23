@@ -2,5 +2,6 @@
 
 
 ### Tech Stack used
-React - for front end.
+React - for front end
+
 Firebase - for pseudo back-end.
