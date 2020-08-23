@@ -1,7 +1,6 @@
-import * as firebase from 'firebase'
-import 'firebase/firestore'
-import 'firebase/storage'
-
+import * as firebase from "firebase";
+import "firebase/firestore";
+import "firebase/storage";
 
 var firebaseConfig = {
   apiKey: "AIzaSyCxMNMvf6LFg_SJUMILMtShK1XEHN7mPm4",
@@ -11,12 +10,12 @@ var firebaseConfig = {
   storageBucket: "e-commerce-react-e542f.appspot.com",
   messagingSenderId: "54774995439",
   appId: "1:54774995439:web:7b7b8713855fc8efbcfe1a",
-  measurementId: "G-REGHLXW5F8"
+  measurementId: "G-REGHLXW5F8",
 };
 
 firebase.initializeApp(firebaseConfig);
 
-const storage = firebase.storage()
+const storage = firebase.storage();
 
 // export {
 //   storage, firebase as default
@@ -24,5 +23,5 @@ const storage = firebase.storage()
 
 // export default storage;
 // export default firebase;
-export {firebase as default}
-export {storage}
+export { firebase as default };
+export { storage };

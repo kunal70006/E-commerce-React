@@ -21,7 +21,7 @@ const Details = () => {
 
   useEffect(() => {
     if (typeof location.id === "undefined") {
-      let id = sessionStorage.getItem("brens");
+      let id = sessionStorage.getItem("blogID");
       firebase
         .firestore()
         .collection("items")
@@ -31,7 +31,7 @@ const Details = () => {
           setCurrentItem(data.data());
         });
     } else {
-      sessionStorage.setItem("brens", location.id);
+      sessionStorage.setItem("blogID", location.id);
       firebase
         .firestore()
         .collection("items")

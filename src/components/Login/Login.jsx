@@ -54,7 +54,7 @@ const Login = () => {
 
           <div className={styles.regHref}>
             Don't have an account?
-            <a href="/register">Register</a>
+            <a onClick={() => history.push("/register")}>Register</a>
           </div>
         </div>
       </div>
