@@ -1,7 +1,8 @@
 ## Amaxon - An E-Commerce Progressive Web App
 
 
-### Tech Stack used
+### Tech Stack-
+
 React - for front end
 
 Firebase - for pseudo back-end.
