@@ -1,7 +1,8 @@
 ## Amaxon - An E-Commerce Progressive Web App
 
+### [Live Demo]()
 
-### Tech Stack-
+#### Tech Stack-
 
 React - for front end
 
