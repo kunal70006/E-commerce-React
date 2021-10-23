@@ -1,6 +1,6 @@
 ## Amaxon - An E-Commerce Progressive Web App
 
-### [Live Demo]()
+### [Live Demo](https://amaxon-react.netlify.app/)
 
 #### Tech Stack-
 
